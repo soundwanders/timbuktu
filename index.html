@@ -1,16 +1,74 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel = "stylesheet" type ="text/css" href = "/assets/index.css">
+<html lang = "en">
+<meta charset = "utf-8">
+<meta name = "viewport" content = "width=device-width,initial-scale=1">
+<meta name = "description" content = "makehero"/>
+<meta name = "author" content = ""/>
 
 <title>Timbuktu</title>
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Arvo&family=Roboto:300, 400, 600" rel="stylesheet"> 
+
+<link rel = "stylesheet" type = "text/css" href = "assets/normalize.css" />
+<link rel = "stylesheet" type = "text/css" href = "assets/skeleton.css" />
+<link rel = "stylesheet" type = "text/css" href = "assets/index.css">
+
 <body>
 
+<div class = "container">
+   <div class = "row">
+        <div class = "twelve column" style = "margin-top: 10%;">
+          <h1>The Library of Timbuktu</h1>
+          <p>
+            A collection of audiobooks & podcasts about ancient civilizations
+          </p>
+        </div>
+    </div>
+
+    <div class = "row">
+        <form action = "">
+            <div class = "five columns">
+            <label for = "title">Book</label>
+            <input type = "text" class = "u-full-width" id = "title"/>
+            </div>
+
+            <div class = "five columns">
+            <label for = "author">Author</label>
+            <input type = "text" class = "u-full-width" id = "author"/>
+            </div>
+
+        <div class = "two columns">
+            <label for = "status">Status</label>
+            <select name = "status" id = "status" class = "u-full-width">
+                <option value = "read">Read</option>
+                <option value = "not read">Not read</option>
+            </select>
+        </div>
+
+        <input type = "submit" value = "Submit" class = "button-primary"/>
+        </form>
+    </div>
+
+    <div class = "row">
+        <div class = "twelve columns">
+        </div>
+
+        <table class = "twelve columns">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+
+            <tbody id = "book-table-body"></tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src = "assets/timbuktu.js"></script>
+
 </body>
-
-<script src=""></script>
-
 </html>
