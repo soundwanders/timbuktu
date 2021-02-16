@@ -8,8 +8,9 @@
 
 <title>Timbuktu</title>
 
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:300, 400, 600" rel="stylesheet"> 
+<link rel = "preconnect" href = "https://fonts.gstatic.com">
+<link href = "https://fonts.googleapis.com/css2?family=Quicksand&display=swap:wght@400, 600, 700" rel = "stylesheet"> 
+<link href = "https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel = "stylesheet">
 
 <link rel = "stylesheet" type = "text/css" href = "assets/normalize.css" />
 <link rel = "stylesheet" type = "text/css" href = "assets/skeleton.css" />
@@ -29,12 +30,17 @@
 
     <div class = "row">
         <form action = "">
-            <div class = "five columns">
+            <div class = "three columns">
+            <label for = "civilization">Civilization</label>
+            <input type = "text" class = "u-full-width" id = "civilization"/>
+            </div>
+
+            <div class = "three columns">
             <label for = "title">Book</label>
             <input type = "text" class = "u-full-width" id = "title"/>
             </div>
 
-            <div class = "five columns">
+            <div class = "three columns">
             <label for = "author">Author</label>
             <input type = "text" class = "u-full-width" id = "author"/>
             </div>
@@ -46,9 +52,10 @@
                 <option value = "not read">Not read</option>
             </select>
         </div>
-
+        <div class = "one columns">
         <input type = "submit" value = "Submit" class = "button-primary"/>
         </form>
+        </div>
     </div>
 
     <div class = "row">
@@ -57,6 +64,7 @@
 
         <table class = "twelve columns">
             <tr>
+                <th>Civilization</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Status</th>

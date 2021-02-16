@@ -16,12 +16,13 @@ const DEFAULT_DATA = [
 ];
 
 // Book properties
+const civilization = document.querySelector("#civilization");
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const status = document.querySelector("#status");
 const tableBody = document.querySelector("#book-table-body");
 
-// Submit button, adds new book into array
+// On form submit...Add new book into array, render new book to table, clear form
 const form = document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
   addBook();
@@ -29,26 +30,26 @@ const form = document.querySelector("form").addEventListener("submit", (e) => {
   clearForm();
 });
 
-// Add event listener to table
-    // Delete selected books from library, prompt user for confirmation to delete
-    // uses 'deleteBook' , 'findBook' and 'render' functions
+// Add Event Listener to table to listen for mouseclick on Delete or Status buttons.
 const table = document.querySelector("table").addEventListener("click", (e) => {
     const currentTarget = e.target.parentNode.parentNode.childNodes[1];
+
     if (e.target.innerHTML == "delete") {
         if (confirm(`Are you sure you want to delete ${currentTarget.innerText}`))
             deleteBook(findBook(timbuktu, currentTarget.innerText));
             console.log("Deleted book from library");
         }
-        if (e.target.classList.contains("status-button")) {
-            changeStatus(findBook(timbuktu, currentTarget.innerText));
-        }
+            if (e.target.classList.contains("status-button")) {
+                changeStatus(findBook(timbuktu, currentTarget.innerText));
+            }
     updateLocalStorage();
     render();
 });
 
 // Create Object 'book' with arguments for title, author and status
 class Book {
-    constructor(title, author, status) {
+    constructor(civilization, title, author, status) {
+        this.civilization = civilization;
         this.title = title;
         this.author = author;
         this.status = status;
@@ -57,11 +58,11 @@ class Book {
 
 // Add new book into the library
 function addBook() {
-    if (title.value.length === 0 || author.value.length === 0) {
+    if (civilization.value.length === 0 || title.value.length === 0 || author.value.length === 0) {
         alert("Please fill all fields");
         return;
     }
-    const newBook = new Book(title.value, author.value, status.value);
+    const newBook = new Book(civilization.value, title.value, author.value, status.value);
     timbuktu.push(newBook);
     updateLocalStorage();
     console.log("New book has been added to the library.");
@@ -92,6 +93,7 @@ function findBook(timbuktuArray, title) {
 
 // Clear input form on new book submission
 function clearForm() {
+    civilization.value = "";
     title.value = "";
     author.value = "";
 };
@@ -101,11 +103,11 @@ function updateLocalStorage() {
      localStorage.setItem("timbuktu", JSON.stringify(timbuktu));
 };
 
-function checkLocalStorage() {
-    if (localStorage.getItem("timbuktu")) {
-    timbuktu = JSON.parse(localStorage.getItem("timbuktu"));
-    } else timbuktu = DEFAULT_DATA;
-};
+    function checkLocalStorage() {
+        if (localStorage.getItem("timbuktu")) {
+        timbuktu = JSON.parse(localStorage.getItem("timbuktu"));
+        } else timbuktu = DEFAULT_DATA;
+    };
 
 function render() {
   checkLocalStorage();
@@ -114,6 +116,7 @@ function render() {
     const htmlBook =
     `
       <tr>
+        <td>${book.civilization}</td>
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td><button class="status-button">${book.status}</button></td>
@@ -122,7 +125,7 @@ function render() {
     `;
     
     tableBody.insertAdjacentHTML("afterbegin", htmlBook);
-  });
-}
+  })
+};
 
 render();
