@@ -1,11 +1,10 @@
 # timbuktu
-Library Focused on Gathering Educational Materials About Ancient Civilizations from the B.C. Era
 
-Skeleton framework: 
-http://getskeleton.com 
+<h1> Library of Timbuktu </h1>
+Library Focused on Collecting Learning Materials About Ancient Civilizations.
 
-Normalize CSS: 
-https://github.com/necolas/normalize.css/ 
+<a href = "http://getskeleton.com">Skeleton CSS framework</a>
+<a href = "https://github.com/necolas/normalize.css/">Normalize CSS</a>
 
 Project Homepage: 
 https://soundwanders.github.io/timbuktu/ 
