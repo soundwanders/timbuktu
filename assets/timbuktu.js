@@ -103,11 +103,11 @@ function updateLocalStorage() {
      localStorage.setItem("timbuktu", JSON.stringify(timbuktu));
 };
 
-    function checkLocalStorage() {
-        if (localStorage.getItem("timbuktu")) {
-        timbuktu = JSON.parse(localStorage.getItem("timbuktu"));
-        } else timbuktu = DEFAULT_DATA;
-    };
+function checkLocalStorage() {
+    if (localStorage.getItem("timbuktu")) {
+    timbuktu = JSON.parse(localStorage.getItem("timbuktu"));
+    } else timbuktu = DEFAULT_DATA;
+};
 
 function render() {
   checkLocalStorage();
