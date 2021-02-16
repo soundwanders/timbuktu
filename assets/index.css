@@ -2,9 +2,9 @@
 
 .delete {
   border: none;
-  background-color: rgb(228, 25, 40);
+  background-color: rgb(210, 15, 15);
   color: white;
-  opacity: 90%;
+  opacity: 95%;
 }
 
 .delete:hover {

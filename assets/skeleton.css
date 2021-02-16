@@ -29,7 +29,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
   position: relative;
-  width: 75%;
+  width: 65%;
   max-width: 1580px;
   margin: 0 auto;
   padding: 0 20px;
@@ -43,14 +43,14 @@
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
-    width: 75%;
+    width: 65%;
     padding: 0; }
 }
 
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 75%; }
+    width: 65%; }
   .column,
   .columns {
     margin-left: 4%; }
@@ -125,7 +125,7 @@ body {
   font-size: 18px; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.5;
   font-weight: 400;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", "Helvetica", sans-serif;
   color: #222; }
 
 
@@ -184,11 +184,12 @@ input[type="button"] {
   text-decoration: none;
   opacity: 90%;
   white-space: nowrap;
-  background-color: rgb(75, 5, 75);
-  border-radius: 4px;
-  border: 1px solid rgb(75, 5, 75);
+  background-color: rgb(75, 10, 85);
+  border-radius: 5px;
+  border: 1px solid rgb(75, 10, 85);
   cursor: pointer;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  margin-top: 1rem;
 }
 
 .button:hover,
@@ -202,7 +203,7 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 
 input[type="button"]:focus {
-  background-color: rgb(95, 40, 95);
+  background-color: rgb(70, 0, 110);
   outline: 0; }
 
 .button.button-primary,
@@ -212,7 +213,7 @@ input[type="reset"].button-primary,
 
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #10bcf0;
+  background-color: #0fb1e2;
   border-color: #10bcf0;
   margin-right: 10rem;
   margin-top: 2.5rem;
@@ -231,7 +232,8 @@ input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
   background-color: #1EAEDB;
-  border-color: #1EAEDB; }
+  border-color: #1EAEDB;
+}
 
 
 /* Forms
@@ -252,7 +254,8 @@ select {
   border: 1px solid #D1D1D1;
   border-radius: 5px;
   box-shadow: none;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 /* Removes awkward default styles on some inputs for iOS */
 input[type="email"],
@@ -344,7 +347,7 @@ code {
   white-space: nowrap;
   background: #F1F1F1;
   border: 1px solid #E1E1E1;
-  border-radius: 4px; }
+  border-radius: 5px; }
 
 pre > code {
   display: block;
@@ -356,17 +359,20 @@ pre > code {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 th {
   text-align: left;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
   font-size: 24px;
   font-weight: 600;
-  border-bottom: 1px solid #E1E1E1;
-  padding-left: 1rem;
+  border-bottom: 1px solid #D1D1D1;
 }
 
 td {
-  left: 10%;
-  padding: 10px 15px;
   text-align: left;
-  border-bottom: 1px solid #E1E1E1;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 600;
+  left: 10%;
+  border-bottom: 1px solid #D1D1D1;
 }
 
 th:first-child,

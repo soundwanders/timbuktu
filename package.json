@@ -1,0 +1,23 @@
+{
+  "name": "timbuktu",
+  "version": "1.0.0",
+  "description": "library ancient history",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"scripts\" : {"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soundwanders/timbuktu.git"
+  },
+  "keywords": [
+    "javascript",
+    "library"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soundwanders/timbuktu/issues"
+  },
+  "homepage": "https://github.com/soundwanders/timbuktu#readme"
+}
