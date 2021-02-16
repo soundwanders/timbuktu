@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "library ancient history",
   "main": "index.js",
+  "devDependencies": {
+    "standard": "*"
+  },
   "scripts": {
     "test": "\"scripts\" : {"
   },
@@ -19,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/soundwanders/timbuktu/issues"
   },
-  "homepage": "https://github.com/soundwanders/timbuktu#readme"
+  "homepage": "https://github.com/soundwanders/timbuktu#readme",
+  "dependencies": {
+    "semistandard": "^16.0.0"
+  }
 }
