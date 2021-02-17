@@ -4,7 +4,7 @@
   "description": "library ancient history",
   "main": "index.js",
   "devDependencies": {
-    "standard": "*"
+    "semistandard": "*"
   },
   "scripts": {
     "test": "\"scripts\" : {"
