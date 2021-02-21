@@ -133,9 +133,24 @@ function render () {
 render();
 
 // _______ firebase database ________ //
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBu5GPmyVRdvrxiRIw6mJ49pVzyp83BOyI",
+    authDomain: "timbuktu-42c57.firebaseapp.com",
+    databaseURL: "https://timbuktu-42c57-default-rtdb.firebaseio.com",
+    projectId: "timbuktu-42c57",
+    storageBucket: "timbuktu-42c57.appspot.com",
+    messagingSenderId: "236099030702",
+    appId: "1:236099030702:web:8c0faef690b95ae62a273f",
+    measurementId: "G-HJ19RV4GR2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
 
 const database = firebase.database();
-const rootRef = database.ref('timbuktu');
+const rootRef = database.ref('');
 
 saveBtn.addEventListener('click' , (e) => {
   e.preventDefault;

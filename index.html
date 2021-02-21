@@ -3,12 +3,13 @@
 <html lang = "en">
 <meta charset = "utf-8">
 <meta name = "viewport" content = "width=device-width,initial-scale=1">
-<meta name = "description" content = "timbuktu"/>
+<meta name = "description" content = "makehero"/>
 <meta name = "author" content = ""/>
 
 <title>Timbuktu</title>
 
 <link rel = "preconnect" href = "https://fonts.gstatic.com">
+<link href = "https://fonts.googleapis.com/css2?family=Quicksand&display=swap:wght@400, 600, 700" rel = "stylesheet"> 
 <link href = "https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel = "stylesheet">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -19,15 +20,16 @@
 <link rel = "stylesheet" type = "text/css" href = "assets/skeleton.css" />
 <link rel = "stylesheet" type = "text/css" href = "assets/index.css">
 
+<body>
+
 <header>
     <div class = "header">
-        <input type = "submit" value = "Save Data" class = "button-primary" id = "saveBtn"/>
+        <input type = "submit" value = "Save Data" class = "button-primary"/>
     </div>
 </header>
 
-<body>
-
 <div class = "container">
+
    <div class = "row">
         <div class = "twelve column" style = "margin-top: 10%;">
           <h1>The Library of Timbuktu</h1>
@@ -86,19 +88,16 @@
 
 <script type="text/javascript" src = "assets/timbuktu.js"></script>
 
-<!--____________________FIREBASE____________________-->
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/8.2.9/firebase-app.js"></script>
+    <!--____________________FIREBASE____________________-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/8.2.9/firebase-analytics.js"></script>
-<script src="/__/firebase/8.2.8/firebase-auth.js"></script>
-<script src="/__/firebase/8.2.8/firebase-database.js"></script>
-<script src="/__/firebase/8.2.8/firebase-storage.js"></script>
+    <script src="/__/firebase/8.2.9/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.2.8/firebase-auth.js"></script>
+    <script src="/__/firebase/8.2.8/firebase-database.js"></script>
+    <script src="/__/firebase/8.2.8/firebase-storage.js"></script>
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
 </body>
 
 </html>
