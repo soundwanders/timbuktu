@@ -1,6 +1,3 @@
-// JavaScript Library
-
-// timbuktu is the library
 let timbuktu;
 
 // Default library data
