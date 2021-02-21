@@ -130,3 +130,20 @@ function render () {
 }
 
 render();
+
+// _______ firebase database ________ //
+
+const database = firebase.database();
+const rootRef = database.ref('');
+
+saveBtn.addEventListener('click' , (e) => {
+  e.preventDefault;
+
+  const autoId = rootRef.push().key;
+  rootRef.child(autoId).set({
+    civ: Book[civilization] ,
+    title: Book[title] ,
+    author: Book[author] ,
+    status: Book[status]
+  })
+});

@@ -9,3 +9,8 @@
   background-color: rgb(190, 50, 50);
   color: white;
 }
+
+header {
+  position: relative;
+  margin: 0 2.5rem;
+}
