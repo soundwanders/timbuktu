@@ -150,16 +150,14 @@ render();
   firebase.analytics();
 
 const database = firebase.database();
-const rootRef = database.ref('');
+const rootRef = database.ref('/timbuktu/');
 
-saveBtn.addEventListener('click' , (e) => {
+const saveButton = document.getElementById('saveDb').addEventListener('click' , (e) => {
   e.preventDefault;
-
   const autoId = rootRef.push().key;
+
   rootRef.child(autoId).set({
-    civ: Book[civilization] ,
-    title: Book[title] ,
-    author: Book[author] ,
-    status: Book[status]
+    timbuktu: setItem('timbuktuData', JSON.stringify(timbuktu))
   })
-});
+  console.log("Saved data");
+})
