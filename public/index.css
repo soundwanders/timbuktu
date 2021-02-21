@@ -1,0 +1,13 @@
+/* CSS */
+
+.delete {
+  border: none;
+  background-color: rgb(210, 15, 15);
+  color: white;
+  opacity: 95%;
+}
+
+.delete:hover {
+  background-color: rgb(190, 50, 50);
+  color: white;
+}
