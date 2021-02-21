@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/soundwanders/timbuktu#readme",
   "dependencies": {
+    "firebase": "^8.2.9",
     "semistandard": "^16.0.0"
   }
 }
