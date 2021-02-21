@@ -2,7 +2,7 @@
 let timbuktu;
 
 // Default library data
-const DEFAULT_DATA = [
+const DEFAULT = [
   { civilization: 'Roman', title: 'Agricola and Germanica', author: 'Tacitus', status: 'read' },
   {
     civilization: 'Japanese',
@@ -108,8 +108,9 @@ function updateLocalStorage () {
 function checkLocalStorage () {
   if (localStorage.getItem('timbuktuData')) {
     timbuktu = JSON.parse(localStorage.getItem('timbuktuData'));
-  } else timbuktu = DEFAULT_DATA;
+  } else timbuktu = DEFAULT;
 }
+
 
 function render () {
   checkLocalStorage();
@@ -132,7 +133,7 @@ function render () {
 
 render();
 
-// _______ firebase database ________ //
+//_____ FIREBASE________ //
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
@@ -157,7 +158,28 @@ const saveButton = document.getElementById('saveDb').addEventListener('click' , 
   const autoId = rootRef.push().key;
 
   rootRef.child(autoId).set({
-    timbuktu: setItem('timbuktuData', JSON.stringify(timbuktu))
+    timbuktu: JSON.stringify(timbuktu) ,
+    DEFAULT: timbuktu,
   })
-  console.log("Saved data");
+  console.log("Saved data to Firebase database");
 })
+
+const updateButton = document.getElementById('updateDb').addEventListener('click', e => {
+  e.preventDefault();
+
+  const newData = {
+    timbuktu: JSON.stringify(timbuktu) ,
+    DEFAULT: JSON.stringify(timbuktu)
+  };
+  console.log("Database updated");
+
+  const autoId = usersRef.push().key;
+  const updates = {};
+  updates['/timbuktu/' + autoId] = newData;
+  database.ref().update(updates);
+});
+
+rootRef.child(0).on('child_changed' , snapshot => {
+  console.log(snapshot(val()));
+  console.log("Data has been changed");
+});

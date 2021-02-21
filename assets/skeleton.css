@@ -220,6 +220,7 @@ input[type="button"].button-primary {
   border-color: #10bcf0;
   margin-right: 10rem;
   margin-top: 2.5rem;
+  margin-left: 1rem;
 }
   
 .button.button-primary:hover,

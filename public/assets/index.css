@@ -12,5 +12,26 @@
 
 header {
   position: relative;
-  margin: 1rem 2.5rem;
+  margin-left: 40vh;
 }
+
+#saveDb {
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+}
+
+#updateDb {
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+}
+
+#login {
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+}
+
+#register {
+  margin-top: 2.5rem;
+  margin-right: 45vh;
+}
+
