@@ -1,5 +1,5 @@
 // timbuktu is the library
-let timbuktu;
+let timbuktu = [];
 
 // Default library data
 const DEFAULT = [
@@ -129,9 +129,8 @@ function render () {
 
     tableBody.insertAdjacentHTML('afterbegin', htmlBook);
   });
-}
+};
 
-render();
 
 //_____ FIREBASE________ //
   // Your web app's Firebase configuration
@@ -150,25 +149,48 @@ render();
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
+// Firebase Database
 const database = firebase.database();
 const rootRef = database.ref('/timbuktu/');
 
+// Save Sort & Update Database
 const saveButton = document.getElementById('saveDb').addEventListener('click' , (e) => {
   e.preventDefault;
+
+  // REMOVE old data
   const autoId = rootRef.push().key;
+  rootRef.child(autoId.value).remove()
+  console.log("Old data removed from database");
+
+  // SORT data by civilization name
+  rootRef.orderByChild('civilization').startAt('A','a').on('value' , snapshot => {
+  console.log(snapshot(val()));
+  console.log("Ordered data alphabetically by civilization name");
+  })
+
+  // SAVE new data
+  const newData = {
+  timbuktu: JSON.stringify(timbuktu)
+  };
 
   rootRef.child(autoId).set({
     timbuktu: JSON.stringify(timbuktu) ,
-  })
-  console.log("Saved data to Firebase database");
+  });
+  console.log("Saved new data to database");
 
-  const autoId = rootRef.push().key;
+  // UPDATE data
   const updates = {};
   updates['/timbuktu/' + autoId] = newData;
   database.ref().update(updates);
 });
 
-rootRef.child(0).on('child_changed' , snapshot => {
-  console.log(snapshot(val()));
-  console.log("Data has been changed");
-});
+  // on data change, take snapshot and log to console
+  rootRef.child(0).on('child_changed' , snapshot => {
+    console.log(snapshot(val()));
+    console.log("Data has been changed");
+  });
+  // on data removal, take snapshot and log to console
+   rootRef.child(0).on('child_removed' , snapshot => {
+    console.log(snapshot(val()));
+    console.log("Data has been changed");
+  });
