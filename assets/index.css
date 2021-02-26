@@ -11,3 +11,7 @@
   background-color: rgb(190, 50, 50);
   color: white;
 }
+
+header {
+  position: relative;
+}
