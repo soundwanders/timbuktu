@@ -111,6 +111,7 @@ function checkLocalStorage () {
   } else timbuktu = DEFAULT;
 }
 
+
 function render () {
   checkLocalStorage();
   tableBody.innerHTML = '';
@@ -155,24 +156,11 @@ const rootRef = database.ref('/timbuktu/');
 const saveButton = document.getElementById('saveDb').addEventListener('click' , (e) => {
   e.preventDefault;
   const autoId = rootRef.push().key;
-
   rootRef.child(autoId).set({
     timbuktu: JSON.stringify(timbuktu) ,
-    DEFAULT: timbuktu,
   })
   console.log("Saved data to Firebase database");
-})
 
-const updateButton = document.getElementById('updateDb').addEventListener('click', e => {
-  e.preventDefault();
-
-  const newData = {
-    timbuktu: JSON.stringify(timbuktu) ,
-    DEFAULT: JSON.stringify(timbuktu)
-  };
-  console.log("Database updated");
-
-  const autoId = usersRef.push().key;
   const updates = {};
   updates['/timbuktu/' + autoId] = newData;
   database.ref().update(updates);
