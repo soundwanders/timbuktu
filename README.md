@@ -1,6 +1,4 @@
-# Timbuktu
-<h2><a href = "https://timbuktu-42c57.web.app/"> Timbuktu</a></h2>
-<br>
+# Timbuktu Digital Library
 Deployed with <a href = "https://firebase.google.com/">Firebase</a>
 <br>
 <a href = "http://getskeleton.com">Skeleton CSS framework</a>
