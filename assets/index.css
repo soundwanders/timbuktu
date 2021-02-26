@@ -14,4 +14,13 @@
 
 header {
   position: relative;
+  padding-top: 2rem;
+}
+
+#login {
+  margin-right: 4rem;
+}
+
+#register {
+  margin-right: 5rem;
 }
