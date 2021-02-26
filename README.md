@@ -1,9 +1,7 @@
-# Timbuktu
-Digital Library Focused on Collecting Learning Materials About Ancient Civilizations
-
+# Timbuktu Digital Library
 <a href = "http://getskeleton.com">Skeleton CSS framework</a>
+<br>
 <a href = "https://github.com/necolas/normalize.css/">Normalize CSS</a>
 
-Project Homepage: 
 https://soundwanders.github.io/timbuktu/ 
 
