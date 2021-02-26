@@ -8,7 +8,7 @@ const rootRef = database.ref('/timbuktu/');
 const autoId = rootRef.push.key();
 
 const admin = require('firebase-admin');
-const serviceAccount = require("path/to/serviceAccountKey.json");
+const serviceAccount = require("home/broop/Desktop/timbuktu-42c57-firebase-adminsdk-5gfn5-90af882f4e.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

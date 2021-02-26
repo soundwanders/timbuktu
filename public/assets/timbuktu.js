@@ -133,64 +133,46 @@ function render () {
 
 
 //_____ FIREBASE________ //
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBu5GPmyVRdvrxiRIw6mJ49pVzyp83BOyI",
-    authDomain: "timbuktu-42c57.firebaseapp.com",
-    databaseURL: "https://timbuktu-42c57-default-rtdb.firebaseio.com",
-    projectId: "timbuktu-42c57",
-    storageBucket: "timbuktu-42c57.appspot.com",
-    messagingSenderId: "236099030702",
-    appId: "1:236099030702:web:8c0faef690b95ae62a273f",
-    measurementId: "G-HJ19RV4GR2"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBu5GPmyVRdvrxiRIw6mJ49pVzyp83BOyI",
+  authDomain: "timbuktu-42c57.firebaseapp.com",
+  databaseURL: "https://timbuktu-42c57-default-rtdb.firebaseio.com",
+  projectId: "timbuktu-42c57",
+  storageBucket: "timbuktu-42c57.appspot.com",
+  messagingSenderId: "236099030702",
+  appId: "1:236099030702:web:8c0faef690b95ae62a273f",
+  measurementId: "G-HJ19RV4GR2"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 // Firebase Database
 const database = firebase.database();
 const rootRef = database.ref('/timbuktu/');
+const autoId = rootRef.push().key;
 
 // Save Sort & Update Database
 const saveButton = document.getElementById('saveDb').addEventListener('click' , (e) => {
   e.preventDefault;
 
-  // REMOVE old data
-  const autoId = rootRef.push().key;
-  rootRef.child(autoId.value).remove()
-  console.log("Old data removed from database");
+    // REMOVE old data
+    rootRef.child(autoId).remove();
+    console.log("Old data removed from database");
 
-  // SORT data by civilization name
-  rootRef.orderByChild('civilization').startAt('A','a').on('value' , snapshot => {
-  console.log(snapshot(val()));
-  console.log("Ordered data alphabetically by civilization name");
-  })
+    // SAVE new data
+    rootRef.child(autoId).set({
+      timbuktu: JSON.stringify(timbuktu)
+    });
+    console.log("Saved new data to database");
 
-  // SAVE new data
-  const newData = {
-  timbuktu: JSON.stringify(timbuktu)
-  };
-
-  rootRef.child(autoId).set({
-    timbuktu: JSON.stringify(timbuktu) ,
-  });
-  console.log("Saved new data to database");
-
-  // UPDATE data
-  const updates = {};
-  updates['/timbuktu/' + autoId] = newData;
-  database.ref().update(updates);
+    // UPDATE data
+    const newData = {
+      timbuktu: JSON.stringify(timbuktu)
+    };
+    const updates = {};
+    updates['/timbuktu/' + autoId] = newData;
+    database.ref().update(updates);
 });
-
-  // on data change, take snapshot and log to console
-  rootRef.child(0).on('child_changed' , snapshot => {
-    console.log(snapshot(val()));
-    console.log("Data has been changed");
-  });
-  // on data removal, take snapshot and log to console
-   rootRef.child(0).on('child_removed' , snapshot => {
-    console.log(snapshot(val()));
-    console.log("Data has been changed");
-  });

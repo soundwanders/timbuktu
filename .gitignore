@@ -1,2 +1,7 @@
 package-lock.json
 node_modules
+.firebaserc
+firebase-hosting-merge.yml
+firebase-hosting-pull-request.yml
+hosting.cHVibGlj.cache
+timbuktu-42c57-firebase-adminsdk-5gfn5-90af882f4e.json
