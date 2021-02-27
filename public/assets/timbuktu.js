@@ -1,7 +1,7 @@
 // JavaScript Library
 
 // timbuktu is the library that will hold the books/podcasts
-let timbuktu;
+let timbuktu = [];
 
 // Default data that is loaded into library each time page is opened
 const DEFAULT = [
@@ -39,6 +39,7 @@ class Book {
 // On form submit => Add new book into array, render book to table, clear forms
 const form = document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
+  e.stopImmediatePropagation();
   addBook();
   render();
   clearForm();
@@ -46,6 +47,9 @@ const form = document.querySelector('form').addEventListener('submit', (e) => {
 
 // Add Event Listener to table to listen for mouse click on Delete or Medium buttons.
 const table = document.querySelector('table').addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  
   // target the "title" field inside array
   const currentTarget = e.target.parentNode.parentNode.childNodes[3];
 
@@ -63,13 +67,13 @@ const table = document.querySelector('table').addEventListener('click', (e) => {
 // Add new book into the library
 function addBook () {
   if (civilization.value.length === 0 || title.value.length === 0 || author.value.length === 0) {
-    alert('Please fill all fields.');
+    alert('Please fill all input fields.');
     return;
   }
   const newBook = new Book(civilization.value, title.value, author.value, medium.value);
   timbuktu.push(newBook);
   updateLocalStorage();
-  console.log('Completed new addition to your library.');
+  console.log('Added new materials to your library.');
 }
 
 // Change medium --> book or podcast
@@ -82,7 +86,7 @@ function toggleMedium (book) {
 
 // Splice to delete book from library
 function deleteBook (currentBook) {
-  timbuktu.splice(currentBook, currentBook + 1);
+  timbuktu.splice(currentBook, currentBook +1);
 }
 
 // Loop through array to find book
@@ -107,7 +111,6 @@ function clearForm () {
 // Local Storage
 function updateLocalStorage () {
   localStorage.setItem('timbuktuData', JSON.stringify(timbuktu));
-  console.log(localStorage.getItem('timbuktuData'));
 }
 
 function checkLocalStorage () {
@@ -116,8 +119,7 @@ function checkLocalStorage () {
   } else timbuktu = DEFAULT;
 }
 
-// RENDER checks then updates local storage, sorts array alphabetically
-// htmlBook variable is created for each book in the timbuktu library
+// Render table
 function render () {
   checkLocalStorage();
   updateLocalStorage();

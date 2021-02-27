@@ -13,21 +13,16 @@
   color: white;
 }
 
-.delete:hover {
-  background-color: rgb(190, 50, 50);
-  color: white;
-}
-
 header {
   position: relative;
 }
 
-#saveDb {
+#setDb {
   margin-top: 2.5rem;
   margin-right: 3rem;
 }
 
-#getDb {
+#reqDb {
   margin-top: 2.5rem;
   margin-right: 3rem;
 }
