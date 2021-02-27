@@ -50,11 +50,11 @@ const table = document.querySelector('table').addEventListener('click', (e) => {
   const currentTarget = e.target.parentNode.parentNode.childNodes[3];
 
   if (e.target.innerHTML == 'x') {
-    if (confirm(`Are you sure you want to delete ${currentTarget.innerText}`)) { deleteBook(findBook(timbuktu, currentTarget.innerText)); }
+    if (confirm(`Are you sure you want to delete ${currentTarget.innerText}`)) { deleteBook(getBook(timbuktu, currentTarget.innerText)); }
     console.log('Deleted book from library');
   }
   if (e.target.classList.contains('medium-button')) {
-    toggleMedium(findBook(timbuktu, currentTarget.innerText));
+    toggleMedium(getBook(timbuktu, currentTarget.innerText));
   }
   updateLocalStorage();
   render();
@@ -86,7 +86,7 @@ function deleteBook (currentBook) {
 }
 
 // Loop through array to find book
-function findBook (timbuktuArray, title) {
+function getBook (timbuktuArray, title) {
   if (timbuktuArray.length === 0 || timbuktuArray === null) {
     return;
   }
@@ -121,7 +121,6 @@ function checkLocalStorage () {
 function render () {
   checkLocalStorage();
   updateLocalStorage();
-  timbuktu.sort().reverse();
   tableBody.innerHTML = '';
   timbuktu.forEach((book) => {
     const htmlBook =
@@ -138,3 +137,5 @@ function render () {
 })};
 
 render();
+// Sort array's default data on page load
+DEFAULT.sort().reverse();
