@@ -167,6 +167,5 @@ const saveButton = document.getElementById('saveDb').addEventListener('click', (
   database.ref().update(updates);
 });
 
-// REMOVE old data
-// rootRef.child(autoId).remove();
-// console.log("Old data removed from database");
+
+// rootRef.child().remove();
