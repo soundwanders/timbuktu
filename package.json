@@ -1,8 +1,8 @@
 {
   "name": "timbuktu",
   "version": "1.0.0",
-  "description": "library ancient history",
-  "main": "timbuktu.js",
+  "description": "history library",
+  "main": "expressTimbuktu.js",
   "devDependencies": {
     "semistandard": "*"
   },
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/soundwanders/timbuktu#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "firebase": "^8.2.9",
     "semistandard": "^16.0.0"
   }
