@@ -2,7 +2,7 @@
   "name": "timbuktu",
   "version": "1.0.0",
   "description": "library ancient history",
-  "main": "index.js",
+  "main": "timbuktu.js",
   "devDependencies": {
     "semistandard": "*"
   },
