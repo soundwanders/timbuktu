@@ -1,6 +1,6 @@
 // express js for Timbuktu firebase database
 
-import express from "/express";
+const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const admin = require('firebase-admin');
