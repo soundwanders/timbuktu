@@ -3,33 +3,36 @@
 // timbuktu is the library
 let timbuktu;
 
-// Default library data
-const DEFAULT_DATA = [
-  { civilization: 'Roman', title: 'Agricola and Germanica', author: 'Tacitus', status: 'read' },
+// Default data that is loaded into library each time page is opened
+const DEFAULT = [
+  { civilization: 'Chinese', title: 'The China History Podcast', author: 'Laszlo Montgomery', medium: 'podcast' } ,
   {
-    civilization: 'Japanese',
-    title: 'Hagakure',
-    author: 'Yamamoto Tsunetomo',
-    status: 'read'
+    civilization: 'Egyptians',
+    title: 'The History of Egypt',
+    author: 'Dominic Perry',
+    medium: 'podcast'
   },
-  { civilization: 'Hittite (Anatolian)', title: 'The Kingdom of the Hittites', author: 'Trevor Bryce', status: 'not read' },
-  { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', status: 'not read' }
+  { civilization: 'Hittites', title: 'The Kingdom of the Hittites', author: 'Trevor Bryce', medium: 'book' } ,
+  { civilization: 'Mongols', title: 'The Wrath of the Khans', author: 'Dan Carlin', medium: 'podcast' } ,
+  { civilization: 'Persians', title: 'The History of Persia', author: 'Trevor Culley', medium: 'podcast' } ,
+  { civilization: 'Romans', title: 'The History of Rome', author: 'Mike Duncan', medium: 'podcast' } ,
+  { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', medium: 'book' } ,
 ];
 
 // Book properties
 const civilization = document.querySelector('#civilization');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
-const status = document.querySelector('#status');
-const tableBody = document.querySelector('#book-table-body');
+const medium = document.querySelector('#medium');
+const tableBody = document.querySelector('#table-body');
 
-// Create Object 'book' with parameters for civilization, title, author and status
+// Create Object 'book' with parameters for civilization, title, author and medium
 class Book {
-  constructor (civilization, title, author, status) {
+  constructor (civilization, title, author, medium) {
     this.civilization = civilization;
     this.title = title;
     this.author = author;
-    this.status = status;
+    this.medium = medium;
   }
 }
 
@@ -41,17 +44,17 @@ const form = document.querySelector('form').addEventListener('submit', (e) => {
   clearForm();
 });
 
-// Add Event Listener to table to listen for mouse click on Delete or Status buttons.
+// Add Event Listener to table to listen for mouse click on Delete or Medium buttons.
 const table = document.querySelector('table').addEventListener('click', (e) => {
   // target the "title" field inside array
   const currentTarget = e.target.parentNode.parentNode.childNodes[3];
 
-  if (e.target.innerHTML == 'delete') {
+  if (e.target.innerHTML == 'x') {
     if (confirm(`Are you sure you want to delete ${currentTarget.innerText}`)) { deleteBook(findBook(timbuktu, currentTarget.innerText)); }
     console.log('Deleted book from library');
   }
-  if (e.target.classList.contains('status-button')) {
-    toggleStatus(findBook(timbuktu, currentTarget.innerText));
+  if (e.target.classList.contains('medium-button')) {
+    toggleMedium(findBook(timbuktu, currentTarget.innerText));
   }
   updateLocalStorage();
   render();
@@ -63,19 +66,18 @@ function addBook () {
     alert('Please fill all fields.');
     return;
   }
-  const newBook = new Book(civilization.value, title.value, author.value, status.value);
+  const newBook = new Book(civilization.value, title.value, author.value, medium.value);
   timbuktu.push(newBook);
   updateLocalStorage();
-  console.log('New book has been added to the library.');
+  console.log('Completed new addition to your library.');
 }
 
-// Change status on book, Read or not read
-// this may get replaced to hold links to books and other resources
+// Change medium --> book or podcast
 
-function toggleStatus (book) {
-  if (timbuktu[book].status === 'read') {
-    timbuktu[book].status = 'not read';
-  } else timbuktu[book].status = 'read';
+function toggleMedium (book) {
+  if (timbuktu[book].medium === 'book') {
+    timbuktu[book].medium = 'podcast';
+  } else timbuktu[book].medium = 'book';
 }
 
 // Splice to delete book from library
@@ -105,16 +107,21 @@ function clearForm () {
 // Local Storage
 function updateLocalStorage () {
   localStorage.setItem('timbuktuData', JSON.stringify(timbuktu));
+  console.log(localStorage.getItem('timbuktuData'));
 }
 
 function checkLocalStorage () {
   if (localStorage.getItem('timbuktuData')) {
     timbuktu = JSON.parse(localStorage.getItem('timbuktuData'));
-  } else timbuktu = DEFAULT_DATA;
+  } else timbuktu = DEFAULT;
 }
 
+// RENDER checks then updates local storage, sorts array alphabetically
+// htmlBook variable is created for each book in the timbuktu library
 function render () {
   checkLocalStorage();
+  updateLocalStorage();
+  timbuktu.sort().reverse();
   tableBody.innerHTML = '';
   timbuktu.forEach((book) => {
     const htmlBook =
@@ -123,13 +130,11 @@ function render () {
         <td>${book.civilization}</td>
         <td>${book.title}</td>
         <td>${book.author}</td>
-        <td><button class="status-button">${book.status}</button></td>
-        <td><button class="delete">delete</button></td>
+        <td><button class="medium-button">${book.medium}</button></td>
+        <td><button class="delete">x</button></td>
       </tr>
-    `;
-
+    `
     tableBody.insertAdjacentHTML('afterbegin', htmlBook);
-  });
-}
+})};
 
 render();
