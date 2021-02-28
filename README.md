@@ -6,4 +6,3 @@ Digital Library Focused on Collecting Learning Materials About Ancient Civilizat
 
 Project Homepage: 
 https://soundwanders.github.io/timbuktu/ 
-
