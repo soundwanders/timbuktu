@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "history library",
   "type": "module" ,
-  "main": "expressTimbuktu.js",
+  "main": "./assets/expressTimbuktu.js",
   "devDependencies": {
     "semistandard": "*"
   },
   "scripts": {
     "test": "\"scripts\" : {"
+
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "firebase": "^8.2.9",
+    "firebase-admin": "^5.4.0",
     "semistandard": "^16.0.0"
   }
 }

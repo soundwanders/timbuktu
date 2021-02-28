@@ -5,38 +5,39 @@ let timbuktu = [];
 
 // Default data that is loaded into library each time page is opened
 const DEFAULT = [
-  { civilization: 'Chinese', title: 'The China History Podcast', author: 'Laszlo Montgomery', medium: 'podcast' } ,
+  { civilization: 'Chinese', title: 'The China History Podcast', author: 'Laszlo Montgomery', format: 'podcast' } ,
   {
     civilization: 'Egyptians',
     title: 'The History of Egypt',
     author: 'Dominic Perry',
-    medium: 'podcast'
+    format: 'podcast'
   },
-  { civilization: 'Hittites', title: 'The Kingdom of the Hittites', author: 'Trevor Bryce', medium: 'book' } ,
-  { civilization: 'Mongols', title: 'The Wrath of the Khans', author: 'Dan Carlin', medium: 'podcast' } ,
-  { civilization: 'Persians', title: 'The History of Persia', author: 'Trevor Culley', medium: 'podcast' } ,
-  { civilization: 'Romans', title: 'The History of Rome', author: 'Mike Duncan', medium: 'podcast' } ,
-  { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', medium: 'book' } ,
+  { civilization: 'Hittites', title: 'The Kingdom of the Hittites', author: 'Trevor Bryce', format: 'book' } ,
+  { civilization: 'Mongols', title: 'The Wrath of the Khans', author: 'Dan Carlin', format: 'podcast' } ,
+  { civilization: 'Persians', title: 'The History of Persia', author: 'Trevor Culley', format: 'podcast' } ,
+  { civilization: 'Romans', title: 'The History of Rome', author: 'Mike Duncan', format: 'podcast' } ,
+  { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', format: 'book' } ,
 ];
 
 // Book properties
 const civilization = document.querySelector('#civilization');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
-const medium = document.querySelector('#medium');
+const format = document.querySelector('#format');
 const tableBody = document.querySelector('#table-body');
 
-// Create Object 'book' with parameters for civilization, title, author and medium
+// Create Object 'book' with parameters for civilization, title, author and format
 class Book {
-  constructor (civilization, title, author, medium) {
+  constructor (civilization, title, author, format) {
     this.civilization = civilization;
     this.title = title;
     this.author = author;
-    this.medium = medium;
+    this.format = format;
   }
 }
 
 // On form submit => Add new book into array, render book to table, clear forms
+   //stopImmediatePropagation() method prevents other listeners of the same event from being called 
 const form = document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -45,7 +46,7 @@ const form = document.querySelector('form').addEventListener('submit', (e) => {
   clearForm();
 });
 
-// Add Event Listener to table to listen for mouse click on Delete or Medium buttons.
+// Add Event Listener to table to listen for mouse click on Delete or format buttons.
 const table = document.querySelector('table').addEventListener('click', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -57,8 +58,8 @@ const table = document.querySelector('table').addEventListener('click', (e) => {
     if (confirm(`Are you sure you want to delete ${currentTarget.innerText}`)) { deleteBook(getBook(timbuktu, currentTarget.innerText)); }
     console.log('Deleted book from library');
   }
-  if (e.target.classList.contains('medium-button')) {
-    toggleMedium(getBook(timbuktu, currentTarget.innerText));
+  if (e.target.classList.contains('format-button')) {
+    toggleformat(getBook(timbuktu, currentTarget.innerText));
   }
   updateLocalStorage();
   render();
@@ -70,18 +71,18 @@ function addBook () {
     alert('Please fill all input fields.');
     return;
   }
-  const newBook = new Book(civilization.value, title.value, author.value, medium.value);
+  const newBook = new Book(civilization.value, title.value, author.value, format.value);
   timbuktu.push(newBook);
   updateLocalStorage();
   console.log('Added new materials to your library.');
 }
 
-// Change medium --> book or podcast
+// Change format --> book or podcast
 
-function toggleMedium (book) {
-  if (timbuktu[book].medium === 'book') {
-    timbuktu[book].medium = 'podcast';
-  } else timbuktu[book].medium = 'book';
+function toggleformat (book) {
+  if (timbuktu[book].format === 'book') {
+    timbuktu[book].format = 'podcast';
+  } else timbuktu[book].format = 'book';
 }
 
 // Splice to delete book from library
@@ -131,7 +132,7 @@ function render () {
         <td>${book.civilization}</td>
         <td>${book.title}</td>
         <td>${book.author}</td>
-        <td><button class="medium-button">${book.medium}</button></td>
+        <td><button class="format-button">${book.format}</button></td>
         <td><button class="delete">x</button></td>
       </tr>
     `
@@ -141,3 +142,44 @@ function render () {
 render();
 // Sort array's default data on page load
 DEFAULT.sort().reverse();
+
+// _____ FIREBASE________ //
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: 'AIzaSyBu5GPmyVRdvrxiRIw6mJ49pVzyp83BOyI',
+  authDomain: 'timbuktu-42c57.firebaseapp.com',
+  databaseURL: 'https://timbuktu-42c57-default-rtdb.firebaseio.com',
+  projectId: 'timbuktu-42c57',
+  storageBucket: 'timbuktu-42c57.appspot.com',
+  messagingSenderId: '236099030702',
+  appId: '1:236099030702:web:8c0faef690b95ae62a273f',
+  measurementId: 'G-HJ19RV4GR2'
+};
+
+// Firebase Database
+const database = firebase.database();
+const rootRef = database.ref('/timbuktu/');
+const autoId = rootRef.push().key;
+
+// Save Sort & Update Database
+const saveButton = document.getElementById('setDatabase').addEventListener('click', (e) => {
+  e.preventDefault;
+  // SAVE new data
+  rootRef.child(autoId).set({
+    timbuktu: JSON.stringify(timbuktu)
+  });
+  console.log('Saved new data to database');
+
+  // UPDATE data
+  const newData = {
+    timbuktu: JSON.stringify(timbuktu)
+  };
+  const updates = {};
+  updates['/timbuktu/' + autoId] = newData;
+  database.ref().update(updates);
+});
+
+// REMOVE old data
+// rootRef.child(autoId).remove();
+// console.log("Old data removed from database");

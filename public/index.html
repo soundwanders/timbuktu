@@ -10,24 +10,24 @@
 
 <link rel = "preconnect" href = "https://fonts.gstatic.com">
 <link href = "https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel = "stylesheet">
-<link href = "https://fonts.googleapis.com/css2?family=Quicksand&display=swap:wght@400, 600, 700" rel = "stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet"> 
 
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
 <link rel="shortcut icon" href="/assets/favicon.ico">
-<link rel = "stylesheet" type = "text/css" href = "assets/normalize.css" />
-<link rel = "stylesheet" type = "text/css" href = "assets/skeleton.css" />
-<link rel = "stylesheet" type = "text/css" href = "assets/index.css">
+<link rel = "stylesheet" type = "text/css" href = "/assets/normalize.css" />
+<link rel = "stylesheet" type = "text/css" href = "/assets/skeleton.css" />
+<link rel = "stylesheet" type = "text/css" href = "/assets/index.css">
 
 <script src = "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+<link rel = "stylesheet" type = "text/css" href = "/assets/index.css">
 
 <div class = "container">
 
 <header>
     <div class = "row">
         <input type = "submit" class = "button u-pull-left" id = "setDatabase" value = "Save" title = "Save data to database"/>
-        <input type = "submit" class = "button u-pull-left" id = "reqDatabse" value = "Load" title = "Load data from database"/>
+        <input type = "submit" class = "button u-pull-left" id = "reqDatabase" value = "Load" title = "Load data from database"/>
 
         <input type = "submit" class = "button u-pull-right" id = "register" value = "Register" title = "Register new user account"/>
         <input type = "submit" class = "button u-pull-right" id = "login" value = "Log In"/>
@@ -63,8 +63,8 @@
             </div>
 
         <div class = "two columns">
-            <label for = "medium">Medium</label>
-            <select name = "medium" id = "medium" class = "u-full-width">
+            <label for = "format">Format</label>
+            <select name = "format" id = "format" class = "u-full-width">
                 <option value = "book">Book</option>
                 <option value = "podcast">Podcast</option>
             </select>
@@ -84,7 +84,7 @@
                 <th>Civilization</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Medium</th>
+                <th>Format</th>
                 <th></th>
             </tr>
             <tbody id = "table-body"></tbody>
@@ -102,9 +102,8 @@
     <!-- Load the Firebase SDKs before loading this file -->
     <script src="/__/firebase/init.js"></script>
 
-
 <script type="text/javascript" src = "assets/timbuktu.js"></script>
-<script type="module" src= "./assets/timbuktu.js"></script>
+<script src="assets/bundle.js"></script>
 
 </body>
 
