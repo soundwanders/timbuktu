@@ -157,11 +157,6 @@ const firebaseConfig = {
   measurementId: 'G-HJ19RV4GR2'
 };
 
-// Firebase Database
-const database = firebase.database();
-const rootRef = database.ref('/timbuktu/');
-const autoId = rootRef.push().key;
-
 // Save Sort & Update Database
 const saveButton = document.getElementById('setDatabase').addEventListener('click', (e) => {
   e.preventDefault;
