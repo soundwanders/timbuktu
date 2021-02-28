@@ -157,24 +157,71 @@ const firebaseConfig = {
   measurementId: 'G-HJ19RV4GR2'
 };
 
-// Save Sort & Update Database
-const saveButton = document.getElementById('setDatabase').addEventListener('click', (e) => {
-  e.preventDefault;
-  // SAVE new data
-  rootRef.child(autoId).set({
-    timbuktu: JSON.stringify(timbuktu)
-  });
-  console.log('Saved new data to database');
+// USER AUTHENTICATION
 
-  // UPDATE data
-  const newData = {
-    timbuktu: JSON.stringify(timbuktu)
-  };
-  const updates = {};
-  updates['/timbuktu/' + autoId] = newData;
-  database.ref().update(updates);
+// Log-in with Google
+const logInGoogle = document.getElementById("loginGoo").addEventListener('click', (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
+  const google = new firebase.auth.GoogleAuthProvider();
+
+  firebase.auth().signInWithPopup(google).then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    const credential = result.credential;
+    // This gives you a GitHub Access Token.
+    const token = credential.accessToken;
+    // The signed-in user info
+    const user = result.user;
+    // Log user info and access token to console
+    console.log("User" , user , "Token" , token);
+  })
+    .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log("Error occurred on Google login" , errorCode , errorMessage);
+  })
 });
 
-// REMOVE old data
-// rootRef.child(autoId).remove();
-// console.log("Old data removed from database");
+// Log-in with Github
+const logInGithub = document.getElementById("loginGit").addEventListener('click', (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
+  const github = new firebase.auth.GithubAuthProvider();
+
+  firebase.auth().signInWithPopup(github).then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    const credential = result.credential;
+    // This gives you a GitHub Access Token.
+    const token = credential.accessToken;
+    // The signed-in user info
+    const user = result.user;
+    // Log user info and access token to console
+    console.log("User" , user , "Token" , token);
+  })
+    .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log("Error occurred on Github login" , errorCode , errorMessage);
+  })
+});
+
+// Log out
+const logout = document.getElementById("logOut").addEventListener('click' , (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
+  // Try to log out of Github
+  try {firebase.auth().signOut(github).then(() => {
+    console.log("Signed out of Github successfully");
+  })}
+  catch(error) {
+    console.log("Error occurred on logout" , error);
+  }
+
+  // Try to log out of Google
+  try {firebase.auth().signOut(google).then(() => {
+    console.log("Signed out of Google successfully");
+  })}
+  catch(error) {
+    console.log("Error occurred on logout" , error);
+  };
+});

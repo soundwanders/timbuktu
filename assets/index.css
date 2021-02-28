@@ -17,21 +17,26 @@ header {
   position: relative;
 }
 
-#setDatabase {
+#saveDatabase {
   margin-top: 2.5rem;
   margin-right: 3rem;
 }
 
-#reqDatabase {
+#getDatabase {
   margin-top: 2.5rem;
   margin-right: 3rem;
 }
 
-#login {
-  margin-top: 2.5rem;
-}
-
-#register {
+#loginGit {
   margin-top: 2.5rem;
   margin-right: 3rem;
+}
+
+#loginGoo {
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+}
+
+#logOut{
+  margin-top: 2.5rem;
 }

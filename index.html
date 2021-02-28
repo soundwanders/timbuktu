@@ -6,31 +6,47 @@
 <meta name = "description" content = "makehero"/>
 <meta name = "author" content = ""/>
 
-<title>Timbuktu</title>
+<head>
+    <title>Timbuktu</title>
 
-<link rel = "preconnect" href = "https://fonts.gstatic.com">
-<link href = "https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel = "stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet"> 
+    <link rel = "preconnect" href = "https://fonts.gstatic.com">
+    <link href = "https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel = "stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet"> 
 
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-<link rel="shortcut icon" href="/assets/favicon.ico">
-<link rel = "stylesheet" type = "text/css" href = "/assets/normalize.css" />
-<link rel = "stylesheet" type = "text/css" href = "/assets/skeleton.css" />
-<link rel = "stylesheet" type = "text/css" href = "/assets/index.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel = "stylesheet" type = "text/css" href = "/assets/normalize.css" />
+    <link rel = "stylesheet" type = "text/css" href = "/assets/skeleton.css" />
+    <link rel = "stylesheet" type = "text/css" href = "/assets/index.css">
 
-<script src = "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<link rel = "stylesheet" type = "text/css" href = "/assets/index.css">
+    <script src = "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "/assets/index.css">
+
+    <!--____________________FIREBASE____________________-->
+    <!-- Firebase JavaScript SDK is required and must be listed first -->
+    <script src="/__/firebase/8.2.9/firebase-app.js"></script>
+    <script src="/__/firebase/8.2.9/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.2.8/firebase-auth.js"></script>
+    <script src="/__/firebase/8.2.8/firebase-database.js"></script>
+    <script src="/__/firebase/8.2.8/firebase-storage.js"></script>
+    <!-- Load the Firebase SDKs before loading the init file -->
+    <script src="/__/firebase/init.js"></script>
+
+</head>
+
+
 
 <div class = "container">
 
 <header>
     <div class = "row">
-        <input type = "submit" class = "button u-pull-left" id = "setDatabase" value = "Save" title = "Save data to database"/>
-        <input type = "submit" class = "button u-pull-left" id = "reqDatabase" value = "Load" title = "Load data from database"/>
+        <input type = "submit" class = "button u-pull-left" id = "saveDatabase" value = "Save" title = "Save data to database"/>
+        <input type = "submit" class = "button u-pull-left" id = "getDatabase" value = "Load" title = "Load data from database"/>
 
-        <input type = "submit" class = "button u-pull-right" id = "login" value = "Log In"/>
-        <input type = "submit" class = "button u-pull-right" id = "register" value = "Register" title = "Register new user account"/>
+        <input type = "submit" class = "button u-pull-right" id = "loginGit" value = "Log In with Github"/>
+        <input type = "submit" class = "button u-pull-right" id = "loginGoo" value = "Log In with Google"/>
+        <input type = "submit" class = "button u-pull-right" id = "logOut" value = "Log Out"/>
     </div>
 </header>
 
@@ -92,18 +108,8 @@
     </div>
 </div>
 
-    <!--____________________FIREBASE____________________-->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/8.2.9/firebase-app.js"></script>
-    <script src="/__/firebase/8.2.9/firebase-analytics.js"></script>
-    <script src="/__/firebase/8.2.8/firebase-auth.js"></script>
-    <script src="/__/firebase/8.2.8/firebase-database.js"></script>
-    <script src="/__/firebase/8.2.8/firebase-storage.js"></script>
-    <!-- Load the Firebase SDKs before loading this file -->
-    <script src="/__/firebase/init.js"></script>
-
 <script type="text/javascript" src = "assets/timbuktu.js"></script>
-<script src="assets/bundle.js"></script>
+<script src="bundle.js"></script>
 
 </body>
 
