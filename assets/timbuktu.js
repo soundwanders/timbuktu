@@ -159,7 +159,7 @@ const firebaseConfig = {
 
 // USER AUTHENTICATION
 
-// Log-in with Google
+// Log in with Google
 const logInGoogle = document.getElementById("loginGoo").addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
@@ -182,7 +182,7 @@ const logInGoogle = document.getElementById("loginGoo").addEventListener('click'
   })
 });
 
-// Log-in with Github
+// Log in with Github
 const logInGithub = document.getElementById("loginGit").addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
@@ -209,17 +209,10 @@ const logInGithub = document.getElementById("loginGit").addEventListener('click'
 const logout = document.getElementById("logOut").addEventListener('click' , (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
-  // Try to log out of Github
-  try {firebase.auth().signOut(github).then(() => {
-    console.log("Signed out of Github successfully");
-  })}
-  catch(error) {
-    console.log("Error occurred on logout" , error);
-  }
 
   // Try to log out of Google
-  try {firebase.auth().signOut(google).then(() => {
-    console.log("Signed out of Google successfully");
+    try {firebase.auth().signOut().then(() => {
+    console.log("Signed out successfully");
   })}
   catch(error) {
     console.log("Error occurred on logout" , error);

@@ -29,14 +29,15 @@ header {
 
 #loginGit {
   margin-top: 2.5rem;
-  margin-right: 3rem;
+  margin-right: 10rem;
 }
 
 #loginGoo {
   margin-top: 2.5rem;
-  margin-right: 3rem;
+  margin-right: 10rem;
 }
 
 #logOut{
   margin-top: 2.5rem;
+  margin-left: 5rem;
 }

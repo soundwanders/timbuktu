@@ -20,23 +20,32 @@ header {
 #saveDatabase {
   margin-top: 2.5rem;
   margin-right: 3rem;
+  font-size: 13px;
 }
 
 #getDatabase {
   margin-top: 2.5rem;
-  margin-right: 3rem;
+  margin-right: 20rem;
+  font-size: 13px;
 }
 
 #loginGit {
   margin-top: 2.5rem;
-  margin-right: 3rem;
+  margin-right: 10rem;
+  margin-left: 3rem;
+  font-size: 13px;
+  font-weight: bolder;
 }
 
 #loginGoo {
   margin-top: 2.5rem;
-  margin-right: 3rem;
+  font-size: 13px;
+  font-weight: bolder;
 }
 
 #logOut{
   margin-top: 2.5rem;
+  margin-right: 3rem;
+  font-size: 13px;
+  font-weight: bolder;
 }
