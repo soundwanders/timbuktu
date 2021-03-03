@@ -5,44 +5,40 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static('public'));
 
-const database = firebase.database();
-const rootRef = database.ref('/timbuktu/');
-const autoId = rootRef.push().key;
-
 // GET
-app.get(`/`, (req, res) => {
+app.get('/', (req, res) => {
   res.send('timbuktu');
 });
 
 // POST
-app.post(`/save`, (req, res) => {
+app.post('/save', (req, res) => {
   rootRef.child(autoId).set({
     timbuktu: req.body.JSON.stringify(timbuktu)
   });
 });
 
 // PUT
-app.put(`/update`, (req, res) => {
+app.put('/update', (req, res) => {
   const newData = {
     timbuktu: req.body.JSON.stringify(timbuktu)
   };
   const updates = {};
-  // SORT data by civilization name
+  // SORT data by civilization name before sending to database
   rootRef.orderByChild('civilization').startAt('A').on('value', snapshot => {
     console.log(snapshot(val()));
   });
-  // UPDATE database
-  updates[`/timbuktu/` + autoId] = newData;
+  // UPDATE database, pair data with with userId or if userId is unavailable use autoId.
+  updates['/timbuktu/' + userId ?? autoId] = newData;
   database.ref().update(updates);
   console.log('Database updated');
 });
 
 // DELETE
-app.delete(`/remove`, (req, res) => {
+app.delete('/remove', (req, res) => {
   rootRef.child(req.body.timbuktu).remove();
   console.log('Data deleted');
 });
 
 app.listen(port, () => {
-  console.log(`Timbuktu is listening to port ${port}`);
+  console.log('Timbuktu is listening to port ${port}');
 });

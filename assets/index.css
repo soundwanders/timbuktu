@@ -17,13 +17,13 @@ header {
   position: relative;
 }
 
-#saveDatabase {
+#saveData {
   margin-top: 2.5rem;
   margin-right: 3rem;
   font-size: 13px;
 }
 
-#getDatabase {
+#getData {
   margin-top: 2.5rem;
   margin-right: 20rem;
   font-size: 13px;
@@ -37,7 +37,7 @@ header {
   font-weight: bolder;
 }
 
-#loginGoo {
+#loginGoogle {
   margin-top: 2.5rem;
   font-size: 13px;
   font-weight: bolder;

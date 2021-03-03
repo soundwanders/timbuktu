@@ -17,27 +17,35 @@ header {
   position: relative;
 }
 
-#saveDatabase {
+#saveData {
   margin-top: 2.5rem;
   margin-right: 3rem;
+  font-size: 13px;
 }
 
-#getDatabase {
+#getData {
   margin-top: 2.5rem;
-  margin-right: 3rem;
+  margin-right: 20rem;
+  font-size: 13px;
 }
 
 #loginGit {
   margin-top: 2.5rem;
   margin-right: 10rem;
+  margin-left: 3rem;
+  font-size: 13px;
+  font-weight: bolder;
 }
 
-#loginGoo {
+#loginGoogle {
   margin-top: 2.5rem;
-  margin-right: 10rem;
+  font-size: 13px;
+  font-weight: bolder;
 }
 
 #logOut{
   margin-top: 2.5rem;
-  margin-left: 5rem;
+  margin-right: 3rem;
+  font-size: 13px;
+  font-weight: bolder;
 }

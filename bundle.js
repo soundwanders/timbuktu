@@ -1,52 +1,49 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 (function (process){(function (){
-// express js for Timbuktu firebase database
+  
+// Express script , written to carry out CRUD database operations
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static('public'));
 
-const database = firebase.database();
-const rootRef = database.ref('/timbuktu/');
-const autoId = rootRef.push().key;
-
 // GET
-app.get(`/`, (req, res) => {
+app.get('/', (req, res) => {
   res.send('timbuktu');
 });
 
 // POST
-app.post(`/save`, (req, res) => {
+app.post('/save', (req, res) => {
   rootRef.child(autoId).set({
     timbuktu: req.body.JSON.stringify(timbuktu)
   });
 });
 
 // PUT
-app.put(`/update`, (req, res) => {
+app.put('/update', (req, res) => {
   const newData = {
     timbuktu: req.body.JSON.stringify(timbuktu)
   };
   const updates = {};
-  // SORT data by civilization name
+  // SORT data by civilization name before sending to database
   rootRef.orderByChild('civilization').startAt('A').on('value', snapshot => {
     console.log(snapshot(val()));
   });
-  // UPDATE database
-  updates[`/timbuktu/` + autoId] = newData;
+  // UPDATE database, pair data with with userId or if userId is unavailable use autoId.
+  updates['/timbuktu/' + userId ?? autoId] = newData;
   database.ref().update(updates);
   console.log('Database updated');
 });
 
 // DELETE
-app.delete(`/remove`, (req, res) => {
+app.delete('/remove', (req, res) => {
   rootRef.child(req.body.timbuktu).remove();
   console.log('Data deleted');
 });
 
 app.listen(port, () => {
-  console.log(`Timbuktu is listening to port ${port}`);
+  console.log('Timbuktu is listening to port ${port}');
 });
 
 

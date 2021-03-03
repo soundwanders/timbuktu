@@ -140,8 +140,6 @@ function render () {
 })};
 
 render();
-// Sort array's default data on page load
-DEFAULT.sort().reverse();
 
 // _____ FIREBASE________ //
 // Your web app's Firebase configuration
@@ -157,8 +155,35 @@ const firebaseConfig = {
   measurementId: 'G-HJ19RV4GR2'
 };
 
-// USER AUTHENTICATION
+const database = firebase.database();
+const rootRef = database.ref('/timbuktu/');
+const autoId = rootRef.push().key;
+const userId = firebase.userId("RMwA9s4AtaNVbMjzq2dfwQzQ6oJ2");
 
+// DATABASE
+// Delete old data, Create new data, then Update the database /timbuktu/
+const saveButton = document.getElementById('saveDb').addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  // REMOVE old data
+  rootRef.child(userId).remove();
+  // SAVE new data
+  rootRef.child(autoId).set({
+    timbuktu: JSON.stringify(timbuktu)
+  });
+  console.log('Saved new data to database');
+
+  // UPDATE data
+  const newData = {
+    timbuktu: JSON.stringify(timbuktu)
+  };
+  const updates = {};
+  updates['/timbuktu/' + autoId] = newData;
+  database.ref().update(updates);
+});
+
+
+// USER AUTHENTICATION
 // Log in with Google
 const logInGoogle = document.getElementById("loginGoo").addEventListener('click', (e) => {
   e.preventDefault;
@@ -216,5 +241,17 @@ const logout = document.getElementById("logOut").addEventListener('click' , (e) 
   })}
   catch(error) {
     console.log("Error occurred on logout" , error);
-  };
+  }
+});
+
+// Load database (take snapshot of referenced data, then parse to timbuktu array);
+const getData = document.getElementById("getData").addEventListener('click' , (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
+  
+  database.ref('timbuktu').once('value', function(snapshot) {
+  timbuktu = JSON.parse(snapshot);
+  }, function(error) {
+      console.log("Error getting data from database", error);
+    })
 });
