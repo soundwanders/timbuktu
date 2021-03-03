@@ -1,7 +1,9 @@
-
 {
   "rules": {
-    ".read": true ,
-    ".write": true
+    "$uid": {
+      ".read": "true",
+      ".write": "$uid === auth.uid",
+      ".validate": "newData.isString() && newData.val().length > 0"
+    }
   }
 }
