@@ -158,17 +158,17 @@ const firebaseConfig = {
 const database = firebase.database();
 const rootRef = database.ref('/timbuktu/');
 const autoId = rootRef.push().key;
-const userId = firebase.userId("RMwA9s4AtaNVbMjzq2dfwQzQ6oJ2");
+const userId = firebase.auth().currentUser;
 
 // DATABASE
 // Delete old data, Create new data, then Update the database /timbuktu/
-const saveButton = document.getElementById('saveDb').addEventListener('click', (e) => {
+const saveButton = document.getElementById('saveData').addEventListener('click', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
   // REMOVE old data
-  rootRef.child(userId).remove();
+  rootRef.child(userId ?? autoId).remove();
   // SAVE new data
-  rootRef.child(autoId).set({
+  rootRef.child(userId ?? autoId).set({
     timbuktu: JSON.stringify(timbuktu)
   });
   console.log('Saved new data to database');
@@ -178,14 +178,27 @@ const saveButton = document.getElementById('saveDb').addEventListener('click', (
     timbuktu: JSON.stringify(timbuktu)
   };
   const updates = {};
-  updates['/timbuktu/' + autoId] = newData;
+  updates['/timbuktu/' + userId ?? autoId] = newData;
   database.ref().update(updates);
+});
+
+// Load database (takes a snapshot of the referenced data, then parse to timbuktu array);
+const getData = document.getElementById("getData").addEventListener('click' , (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
+  
+  database.ref('timbuktu').once('value', function(snapshot) {
+  timbuktu = JSON.parse(snapshot);
+  console.log("Data loaded" , snapshot);
+  }, function(error) {
+      console.log("Error getting data from database", error);
+    })
 });
 
 
 // USER AUTHENTICATION
 // Log in with Google
-const logInGoogle = document.getElementById("loginGoo").addEventListener('click', (e) => {
+const logInGoogle = document.getElementById("loginGoogle").addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
   const google = new firebase.auth.GoogleAuthProvider();
@@ -242,16 +255,4 @@ const logout = document.getElementById("logOut").addEventListener('click' , (e) 
   catch(error) {
     console.log("Error occurred on logout" , error);
   }
-});
-
-// Load database (take snapshot of referenced data, then parse to timbuktu array);
-const getData = document.getElementById("getData").addEventListener('click' , (e) => {
-  e.preventDefault;
-  e.stopImmediatePropagation;
-  
-  database.ref('timbuktu').once('value', function(snapshot) {
-  timbuktu = JSON.parse(snapshot);
-  }, function(error) {
-      console.log("Error getting data from database", error);
-    })
 });
