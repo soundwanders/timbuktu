@@ -141,9 +141,7 @@ function render () {
 
 render();
 
-// _____ FIREBASE________ //
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// ________FIREBASE ________ //
 const firebaseConfig = {
   apiKey: 'AIzaSyBu5GPmyVRdvrxiRIw6mJ49pVzyp83BOyI',
   authDomain: 'timbuktu-42c57.firebaseapp.com',
@@ -160,7 +158,7 @@ const rootRef = database.ref('/timbuktu/');
 const autoId = rootRef.push().key;
 const userId = firebase.auth().currentUser;
 
-// DATABASE
+// FIREBASE REALTIME DATABASE
 // Delete old data, Create new data, then Update the database /timbuktu/
 const saveButton = document.getElementById('saveData').addEventListener('click', (e) => {
   e.preventDefault();
@@ -196,7 +194,7 @@ const getData = document.getElementById("getData").addEventListener('click' , (e
 });
 
 
-// USER AUTHENTICATION
+// FIREBASE USER AUTHENTICATION
 // Log in with Google
 const logInGoogle = document.getElementById("loginGoogle").addEventListener('click', (e) => {
   e.preventDefault;
