@@ -179,7 +179,7 @@ const saveButton = document.getElementById('saveData').addEventListener('click',
   };
   const updates = {};
   updates['/timbuktu/' + userId ?? autoId] = newData;
-  database.ref().update(updates);
+  rootRef.update(updates);
 });
 
 // Load database (takes a snapshot of the referenced data, then parse to timbuktu array);
@@ -187,7 +187,7 @@ const getData = document.getElementById("getData").addEventListener('click' , (e
   e.preventDefault;
   e.stopImmediatePropagation;
   
-  database.ref('timbuktu').once('value', function(snapshot) {
+  rootRef.once('value', function(snapshot) {
   timbuktu = JSON.parse(snapshot);
   console.log("Data loaded" , snapshot);
   }, function(error) {
