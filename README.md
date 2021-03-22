@@ -13,12 +13,12 @@
   - I used Skeleton CSS to achieve a clean, responsive design that would work on both mobile and pc.
     - I enjoyed having the challenge of exploring an unfamiliar framework and implementing a boilerplate framework.
   - The first version of the project that implemented a default data set saved and loaded through use of localStorage and JSON.
-     - Then, I had the idea to create a database connected to the page with CRUD functionality so the data did not 'expire.'
-     - The goal was to create a full-stack application, deployed with Firebase, that contains a realtime database and the ability to save each authenticated user's data in a way that they can only access their data and nobody else can read/write over it.
-       - This allowed others to create their own exclusive "libraries" and keep a permanent, running record of their data.
-       - User authentication is achieved using Github and Google APIs.
-       - Each user is given a unique identification token on first time log-in that does not change.
-       - Data is saved under user's unique id so it can be retrieved at a later time.
+  - Once that was complete, I had the idea to create a database connected to the page with CRUD functionality.
+  - The goal was to create a full-stack application, deployed with Firebase, that contains a realtime database and the ability to save and retrieve each authenticated user's data in such a way that they can only access their data and nobody else can read/write over it.
+    - This allows others to create their own exclusive "libraries" and keep a permanent, running record of their data.
+    - User authentication is achieved using Github and Google APIs.
+    - Each user is given a unique identification token on first time log-in that does not change.
+    - Data is saved under user's unique id so it can be retrieved at a later time.
 
 ## Future Fixes & Updates
   - **This project is not fully functional yet. Still in development!**
