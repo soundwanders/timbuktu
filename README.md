@@ -37,5 +37,5 @@
 <br>
 <br>
 Deployed with <a href = "https://firebase.google.com/">Firebase</a> <br>
-https://soundwanders.github.io/timbuktu/ <br>
-https://timbuktu-42c57.web.app/
+https://timbuktu-42c57.web.app/ <br>
+https://soundwanders.github.io/timbuktu/ 
