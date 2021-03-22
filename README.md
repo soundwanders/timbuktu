@@ -5,7 +5,7 @@
   - A project created with HTML, CSS, Javascript. Also used the frameworks Normalize.css and Skeleton CSS.
   - Library holds Book title, author, format (book or podcast) and the civilization it covers.
   - User is able to input their own books or podcasts and add them to the array using Submit button.
-  - Delete books from the library using the red 'X' button located on the right side of the array.
+  - Delete books from the library by clicking the red 'X' button located on the right side of the array.
   - I used Skeleton CSS to achieve a clean, responsive design that would work on both mobile and pc.
     - I enjoyed having the challenge of exploring an unfamiliar framework and implementing a boilerplate framework.
   - The library is a table that displays an array of objects; the books are constructed and pushed to the array.
@@ -38,4 +38,5 @@
 <br>
 <br>
 Deployed with <a href = "https://firebase.google.com/">Firebase</a> <br>
+https://soundwanders.github.io/timbuktu/ <br>
 https://timbuktu-42c57.web.app/
