@@ -1,18 +1,17 @@
-# This branch, 'main', only contains code for the static web application hosted on Github Pages. This version uses local storage and is not connected to Firebase.
-  ## To see the code for the version currently in development, which is a full-stack web application deployed with Firebase, please visit the branch 'firebase'
-
 ## Timbuktu: The Library of Ancient History
-  - A project created with HTML, CSS, Javascript. Also used the frameworks Normalize.css and Skeleton CSS.
+### This branch, 'main', only contains code for the static web application hosted on Github Pages. This version uses local storage and is not connected to Firebase. To see the code for the version currently in development, which is a full-stack web application deployed with Firebase, please visit the branch 'firebase'
+
+## Project Notes
+  - A project created with HTML, CSS, Javascript, Skeleton CSS and Normalize.css
   - Library holds Book title, author, format (book or podcast) and the civilization it covers.
   - User is able to input their own books or podcasts and add them to the array using Submit button.
   - Delete books from the library by clicking the red 'X' button located on the right side of the array.
-  - I used Skeleton CSS to achieve a clean, responsive design that would work on both mobile and pc.
-    - I enjoyed having the challenge of exploring an unfamiliar framework and implementing a boilerplate framework.
-  - The library is a table that displays an array of objects; the books are constructed and pushed to the array.
+    - The library is a table that displays an array of objects; the books are constructed and pushed to the array.
     - Books are created as objects using a constructor and then pushed to the array.
     - Podcasts are created with the same object constructor as Books.
-    - The material's format property is assigned through a Select field with two options -> Book, Podcast
-
+    - The material's format property is assigned through a Select field with two options -> Book, Podcast   
+  - I used Skeleton CSS to achieve a clean, responsive design that would work on both mobile and pc.
+    - I enjoyed having the challenge of exploring an unfamiliar framework and implementing a boilerplate framework.
   - The first version of the project that implemented a default data set saved and loaded through use of localStorage and JSON.
      - Then, I had the idea to create a database connected to the page with CRUD functionality so the data did not 'expire.'
      - The goal was to create a full-stack application, deployed with Firebase, that contains a realtime database and the ability to save each authenticated user's data in a way that they can only access their data and nobody else can read/write over it.
