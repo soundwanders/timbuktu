@@ -21,7 +21,7 @@
     - Data is saved under user's unique id so it can be retrieved at a later time.
 
 ## Future Fixes & Updates
-  - **The full-stack version of this project is not fully functional yet. Still in development!**
+  - **The full-stack version of this project is not fully functional yet. Still in development.**
   - Add a tab to each table column to Sort library alphabetically depending on user choice (sorted by title, author, etc).
   - Realtime database needs to be fixed:
     - Supposed to load the relevant data when logging in as an authenticated user, but it is currently not functional.
