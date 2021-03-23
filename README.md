@@ -24,6 +24,7 @@
   - Add a tab to each table column to Sort library alphabetically depending on user choice (sorted by title, author, etc).
   - Realtime database needs to be fixed:
     - Supposed to load the relevant data when logging in as an authenticated user, but it is currently not functional.
+      - Firebase saves arrays as objects so array [a, b, c] would be {0: a, 1: b, 2: c}
       - Look into saving and retrieving a snapshot of the user's data.
     - Instead of default data loaded from a Javascript object, must load the data from Firebase database
       - May have to remove the default data array and replace it with user's saved data.
