@@ -4,8 +4,8 @@
   - A project created with HTML, CSS, Javascript, Skeleton CSS and Normalize.css
   - Library holds Book title, author, format (book or podcast) and the civilization it covers.
   - User is able to input their own books or podcasts and add them to the array using Submit button.
-  - Delete books from the library by clicking the red 'X' button located on the right side of the array.
-    - The library is a table that displays an array of objects; the books are constructed and pushed to the array.
+  - The library is a table that displays an array of objects; the books are constructed and pushed to the array.
+    - Delete books from the library by clicking the red 'X' button located next to each entry.
     - Books are created as objects using a constructor and then pushed to the array.
     - Podcasts are created with the same object constructor as Books.
     - The material's format property is assigned through a Select field with two options -> Book, Podcast   
@@ -30,11 +30,9 @@
       - May have to remove the default data array and replace it with user's saved data.
     - Instead of a save/load data button, make realtime database that updates automatically
     - Straighten out the permissions for CRUD operations to be carried out for all authenticated users
-<br>
+
 <a href = "http://getskeleton.com">Skeleton CSS framework</a>
-<br>
 <a href = "https://github.com/necolas/normalize.css/">Normalize CSS</a>
-<br>
-<br>
-Deployed with <a href = "https://firebase.google.com/">Firebase</a> <br>
+Deployed using <a href = "https://firebase.google.com/">Firebase</a>
+
 https://timbuktu-42c57.web.app/
