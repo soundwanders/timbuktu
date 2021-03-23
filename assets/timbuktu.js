@@ -21,7 +21,7 @@
     e.preventDefault;
     e.stopImmediatePropagation;
 
-    rootRef.child.once('value') , function (snapshot) {
+    rootRef.once('value') , function (snapshot) {
       //timbuktu = snapshot.toArray(JSON.parse(timbuktu));
       timbuktu.forEach(Book => timbuktu.push(Book)) ,
       console.log('Data loaded', timbuktu);
