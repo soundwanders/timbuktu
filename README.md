@@ -31,8 +31,8 @@
     - Instead of a save/load data button, make realtime database that updates automatically
     - Straighten out the permissions for CRUD operations to be carried out for all authenticated users
 <br>
-<a href = "http://getskeleton.com">Skeleton CSS framework</a>
-<a href = "https://github.com/necolas/normalize.css/">Normalize CSS</a>
+<a href = "http://getskeleton.com">Skeleton CSS framework</a> <br>
+<a href = "https://github.com/necolas/normalize.css/">Normalize CSS</a> <br>
 Deployed with <a href = "https://firebase.google.com/">Firebase</a> <br>
 https://timbuktu-42c57.web.app <br>
 https://soundwanders.github.io/timbuktu
