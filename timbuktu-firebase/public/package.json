@@ -1,0 +1,34 @@
+{
+  "name": "timbuktu",
+  "version": "1.0.0",
+  "description": "history library",
+  "type": "module" ,
+  "main": "./assets/expressTimbuktu.js",
+  "devDependencies": {
+    "semistandard": "*"
+  },
+  "scripts": {
+    "test": "\"scripts\" : {"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soundwanders/timbuktu.git"
+  },
+  "keywords": [
+    "javascript",
+    "library"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soundwanders/timbuktu/issues"
+  },
+  "homepage": "https://github.com/soundwanders/timbuktu#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase": "^8.2.9",
+    "firebase-admin": "^5.4.0",
+    "semistandard": "^16.0.0"
+  }
+}

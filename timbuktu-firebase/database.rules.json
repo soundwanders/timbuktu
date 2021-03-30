@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "timbuktu": {
+        ".read": "true" ,
+        ".write": "auth != null"
+    } ,
+    "users": {
+      ".read": "true",
+      "$uid": {
+          ".write": "auth.uid === $uid"
+      }
+    }
+  }
+}
