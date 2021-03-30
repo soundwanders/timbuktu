@@ -1,10 +1,13 @@
-/* CSS */
-
 .delete {
   font-family: Arial, Helvetica, sans-serif;
   border: none;
+<<<<<<< HEAD
   border-radius: 1rem;
   font-size: 24px;
+=======
+  border-radius: 5px;
+  font-size: 20px;
+>>>>>>> 5b8ec48d6c7318db724806742e2ade364e337f03
   background-color: rgb(210, 15, 15);
   color: white;
   opacity: 95%;
@@ -16,6 +19,7 @@
 }
 
 header {
+<<<<<<< HEAD
   position: relative;
   padding-top: 2rem;
 }
@@ -26,4 +30,45 @@ header {
 
 #register {
   margin-right: 5rem;
+=======
+  position: static;
+}
+
+#saveData {
+  border-radius: 5px;
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+  font-size: 13px;
+}
+
+#getData {
+  border-radius: 5px;
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+  font-size: 13px;
+}
+
+#loginGit {
+  border-radius: 5px;
+  background-color:rgb(0, 0, 0);
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+  font-size: 13px;
+}
+
+#loginGoogle {
+  border-radius: 5px;
+  background-color:rgb(0, 0, 0);
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+  font-size: 13px;
+}
+
+#logOut {
+  border-radius: 5px;
+  background-color:rgb(0, 0, 0);
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+  font-size: 13px;
+>>>>>>> 5b8ec48d6c7318db724806742e2ade364e337f03
 }

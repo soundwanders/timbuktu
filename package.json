@@ -1,9 +1,16 @@
 {
   "name": "timbuktu",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "library ancient history",
   "main": "timbuktu.js",
+=======
+  "description": "history library",
+  "type": "module",
+  "main": "bundle.js",
+>>>>>>> 5b8ec48d6c7318db724806742e2ade364e337f03
   "devDependencies": {
+    "esmify": "^2.1.1",
     "semistandard": "*"
   },
   "scripts": {
@@ -24,6 +31,11 @@
   },
   "homepage": "https://github.com/soundwanders/timbuktu#readme",
   "dependencies": {
+    "axios": "^0.21.1",
+    "browserify": "^17.0.0",
+    "express": "^4.17.1",
+    "firebase": "^8.2.9",
+    "node.js": "^0.0.1-security",
     "semistandard": "^16.0.0"
   }
 }
