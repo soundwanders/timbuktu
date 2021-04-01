@@ -1,14 +1,9 @@
 {
   "name": "timbuktu",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "description": "library ancient history",
-  "main": "timbuktu.js",
-=======
   "description": "history library",
   "type": "module",
   "main": "bundle.js",
->>>>>>> 5b8ec48d6c7318db724806742e2ade364e337f03
   "devDependencies": {
     "esmify": "^2.1.1",
     "semistandard": "*"

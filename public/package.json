@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "history library",
   "type": "module" ,
-  "main": "./assets/expressTimbuktu.js",
+  "main": "bundle.js",
   "devDependencies": {
     "semistandard": "*"
   },
