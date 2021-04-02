@@ -27,8 +27,8 @@
     - Instead of default data loaded from a Javascript object, must display the data from the database
     - Straighten out granting permission for all authenticated users to be granted read/write privileges
 
-<a href = "http://getskeleton.com">Skeleton CSS framework</a>
-<a href = "https://github.com/necolas/normalize.css/">Normalize CSS</a>
+<a href = "http://getskeleton.com">Skeleton CSS</a>
+<a href = "https://github.com/necolas/normalize.css/">Normalize.CSS</a>
 Deployed using <a href = "https://firebase.google.com/">Firebase</a>
 
 https://timbuktu-42c57.web.app/
