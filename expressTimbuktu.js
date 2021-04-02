@@ -28,7 +28,7 @@ app.put('/update', (req, res) => {
     console.log(snapshot(val()));
   });
   // UPDATE database, pair data with with userId or if userId is unavailable use autoId.
-  updates['/timbuktu/' + userId ?? autoId] = newData;
+  updates['/library/' + userId ?? autoId] = newData;
   database.ref().update(updates);
   console.log('Database updated');
 });

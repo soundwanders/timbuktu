@@ -1,24 +1,22 @@
 // JavaScript Library
 
-
 // timbuktu is the library that will hold the books/podcasts
 let timbuktu = [];
 
-
 // Default data that is loaded into library each time page is opened
 const DEFAULT = [
-  { civilization: 'Chinese', title: 'The China History Podcast', author: 'Laszlo Montgomery', format: 'podcast' } ,
+  { civilization: 'Chinese', title: 'The China History Podcast', author: 'Laszlo Montgomery', format: 'podcast' },
   {
     civilization: 'Egyptians',
     title: 'The History of Egypt',
     author: 'Dominic Perry',
     format: 'podcast'
   },
-  { civilization: 'Hittites', title: 'The Kingdom of the Hittites', author: 'Trevor Bryce', format: 'book' } ,
-  { civilization: 'Mongols', title: 'The Wrath of the Khans', author: 'Dan Carlin', format: 'podcast' } ,
-  { civilization: 'Persians', title: 'The History of Persia', author: 'Trevor Culley', format: 'podcast' } ,
-  { civilization: 'Romans', title: 'The History of Rome', author: 'Mike Duncan', format: 'podcast' } ,
-  { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', format: 'book' } ,
+  { civilization: 'Hittites', title: 'The Kingdom of the Hittites', author: 'Trevor Bryce', format: 'book' },
+  { civilization: 'Mongols', title: 'The Wrath of the Khans', author: 'Dan Carlin', format: 'podcast' },
+  { civilization: 'Persians', title: 'The History of Persia', author: 'Trevor Culley', format: 'podcast' },
+  { civilization: 'Romans', title: 'The History of Rome', author: 'Mike Duncan', format: 'podcast' },
+  { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', format: 'book' }
 ];
 
 // Book properties
@@ -39,7 +37,7 @@ class Book {
 }
 
 // On form submit => Add new book into array, render book to table, clear forms
-   //stopImmediatePropagation() method prevents other listeners of the same event from being called 
+// stopImmediatePropagation() method prevents other listeners of the same event from being called
 const form = document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -89,7 +87,7 @@ function toggleformat (book) {
 
 // Splice to delete book from library
 function deleteBook (currentBook) {
-  timbuktu.splice(currentBook, currentBook +1);
+  timbuktu.splice(currentBook, currentBook + 1);
 }
 
 // Loop through array to find book
@@ -137,9 +135,10 @@ function render () {
         <td><button class="format-button">${book.format}</button></td>
         <td><button class="delete">x</button></td>
       </tr>
-    `
+    `;
     tableBody.insertAdjacentHTML('afterbegin', htmlBook);
-})};
+  });
+}
 
 render();
 
@@ -156,7 +155,7 @@ const firebaseConfig = {
 };
 
 const database = firebase.database();
-const rootRef = database.ref('/timbuktu/');
+const rootRef = database.ref('/library/');
 const autoId = rootRef.push().key;
 const userId = firebase.auth().currentUser;
 
@@ -171,7 +170,7 @@ const saveButton = document.getElementById('saveData').addEventListener('click',
   // SAVE new data
   rootRef.child(autoId).set({
     timbuktu: JSON.stringify(timbuktu)
-  })
+  });
   console.log('Saved new data to database');
 });
 
@@ -184,19 +183,23 @@ const getData = document.getElementById('getData').addEventListener('click', (e)
     snapshot.forEach((childSnapshot) => {
       const childBooks = childSnapshot.val();
       const bookData = JSON.stringify(childBooks);
+      const parseData = JSON.parse(bookData);
 
-      timbuktu.push(bookData);
+      // CHILDBOOKS AND PARSEDATA RETURN THE SAME OBJECT 'TIMBUKTU'
+      // FIGURE OUT HOW TO GET TIMBUKTU'S PROPERTIES AND PUSH THEM TO ARRAY
+
+      timbuktu.slice(0);
+      timbuktu.push(parseData);
       console.log(childBooks);
-      console.log(bookData);
-    })
-    console.log("Data loaded")
-  })
+      console.log(parseData);
+    });
+    console.log('Data loaded');
+  });
 });
-
 
 // FIREBASE USER AUTHENTICATION
 // Log in with Google
-const logInGoogle = document.getElementById("loginGoogle").addEventListener('click', (e) => {
+const logInGoogle = document.getElementById('loginGoogle').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
   const google = new firebase.auth.GoogleAuthProvider();
@@ -209,21 +212,21 @@ const logInGoogle = document.getElementById("loginGoogle").addEventListener('cli
     // The signed-in user info
     const user = result.user;
     // Log user info and access token to console
-    console.log("User" , user , "Token" , token);
+    console.log('User', user, 'Token', token);
   })
     .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log("Error occurred on Google login" , errorCode , errorMessage);
-  })
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('Error occurred on Google login', errorCode, errorMessage);
+    });
 });
 
 // Log in with Github
-const logInGithub = document.getElementById("loginGit").addEventListener('click', (e) => {
+const logInGithub = document.getElementById('loginGit').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
   const github = new firebase.auth.GithubAuthProvider();
-  
+
   firebase.auth().signInWithPopup(github).then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
     const credential = result.credential;
@@ -232,28 +235,29 @@ const logInGithub = document.getElementById("loginGit").addEventListener('click'
     // The signed-in user info
     const user = result.user;
     // Log user info and access token to console
-    console.log("User" , user , "Token" , token);
+    console.log('User', user, 'Token', token);
+    console.log('Log-in successful');
   })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log("Error occurred on Github login" , errorCode , errorMessage);
-  })
+      console.log('Error occurred on Github login', errorCode, errorMessage);
+    });
 });
 
 // Log out
-  const logout = document.getElementById('logOut').addEventListener('click', (e) => {
-    e.preventDefault;
-    e.stopImmediatePropagation;
+const logout = document.getElementById('logOut').addEventListener('click', (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
 
-    // Try to log out of Google
-    try {
-      firebase.auth().signOut().then(() => {
-        console.log('Signed out successfully');
-      });
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('Error occurred on logout', errorCode, errorMessage);
-    }
-  }); 
+  // Try to log out of Google
+  try {
+    firebase.auth().signOut().then(() => {
+      console.log('Signed out successfully');
+    });
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log('Error occurred on logout', errorCode, errorMessage);
+  }
+});
