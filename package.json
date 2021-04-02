@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "history library",
   "type": "module",
-  "main": "bundle.js",
+  "main": "timbuktu.js",
   "devDependencies": {
     "esmify": "^2.1.1",
     "semistandard": "*"

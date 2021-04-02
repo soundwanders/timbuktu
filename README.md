@@ -7,8 +7,7 @@
   - The library is a table that displays an array of objects; the books are constructed and pushed to the array.
     - Delete books from the library by clicking the red 'X' button located next to each entry.
     - Books are created as objects using a constructor and then pushed to the array.
-    - Podcasts are created with the same object constructor as Books.
-    - The material's format property is assigned through a Select field with two options -> Book, Podcast   
+    - The book object's 'format' property is assigned through a Select field with two options -> Book, Podcast   
   - I used Skeleton CSS to achieve a clean, responsive design that would work on both mobile and pc.
     - I enjoyed having the challenge of exploring an unfamiliar framework and implementing a boilerplate framework.
   - The first version of the project that implemented a default data set saved and loaded through use of localStorage and JSON.
@@ -22,14 +21,11 @@
 ## Future Fixes & Updates
   - **The full-stack version of this project is still in development**
   - Add a tab to each table column to Sort library alphabetically depending on user choice (sorted by title, author, etc).
-  - Realtime database needs to be fixed:
+  - Realtime database needs to be completed ...
     - Supposed to load the relevant data when logging in as an authenticated user, but it is currently not functional.
       - Firebase saves arrays as objects so array [a, b, c] would be {0: a, 1: b, 2: c}
-      - Look into saving and retrieving a snapshot of the user's data.
-    - Instead of default data loaded from a Javascript object, must load the data from Firebase database
-      - May have to remove the default data array and replace it with user's saved data.
-    - Instead of a save/load data button, make realtime database that updates automatically
-    - Straighten out the permissions for CRUD operations to be carried out for all authenticated users
+    - Instead of default data loaded from a Javascript object, must display the data from the database
+    - Straighten out granting permission for all authenticated users to be granted read/write privileges
 
 <a href = "http://getskeleton.com">Skeleton CSS framework</a>
 <a href = "https://github.com/necolas/normalize.css/">Normalize CSS</a>
