@@ -1,9 +1,10 @@
 // TIMBUKTU.JS //
 
 // timbuktu is the library array
-const timbuktu = [];
+let timbuktu = [];
 
 // Default data that is loaded into library each time page is opened
+/*
 const DEFAULT = [
   { civilization: 'Chinese', title: 'The China History Podcast', author: 'Laszlo Montgomery', format: 'podcast' },
   {
@@ -18,6 +19,7 @@ const DEFAULT = [
   { civilization: 'Romans', title: 'The History of Rome', author: 'Mike Duncan', format: 'podcast' },
   { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', format: 'book' }
 ];
+*/
 
 // Book properties
 const civilization = document.querySelector('#civilization');
@@ -149,7 +151,7 @@ const firebaseConfig = {
 };
 
 const database = firebase.database();
-const rootRef = database.ref('/timbuktu/');
+const rootRef = database.ref('/library/');
 const autoId = rootRef.push().key;
 const user = firebase.auth().currentUser;
 
@@ -159,12 +161,12 @@ const saveButton = document.getElementById('saveData').addEventListener('click',
   e.preventDefault();
   e.stopImmediatePropagation();
 
-  // if authorized user, remove their old data before saving new data
-  rootRef.child('/timbuktu/').remove();
+  // if authorized user, remove old data before saving new data
+  rootRef.child("timbuktu").remove();
 
   // save data under authorized user's id, else save under unique key if no uid
-  rootRef.child(user ?? autoId).set({
-   book: JSON.stringify(timbuktu)
+  rootRef.child("timbuktu").set({
+  book: JSON.stringify(timbuktu) ,
   })
   console.log('Saved new data to database');
 });
@@ -177,31 +179,42 @@ const getData = document.getElementById('getData').addEventListener('click', (e)
 
   rootRef.once('value', (snapshot) => {
     snapshot.forEach((childSnapshot) => {
+      
       const childBooks = childSnapshot.val();
-      const bookData = JSON.stringify(childBooks);
+      const data = childSnapshot.exportVal();
+      const newBook = new Book(childBooks.civilization , childBooks.title , childBooks.author , childBooks.format);
+      console.log(newBook);
+      
+      timbuktu.splice(0, timbuktu.length);
+      timbuktu.push(newBook);
 
       tableBody.innerHTML = '';
-      timbuktu.forEach((Object) => {
+      timbuktu.forEach((newBook) => {
         const loadBook =
         `)
-          <tr>
-            <td>${this.civilization}</td>
-            <td>${this.title}</td>
-            <td>${this.author}</td>
-            <td><button class="format-button">${this.format}</button></td>
+          <tr>  
+            <td>${newBook.civilization}</td>
+            <td>${newBook.title}</td>
+            <td>${newBook.author}</td>
+            <td><button class="format-button">${newBook.format}</button></td>
             <td><button class="delete">x</button></td>
           </tr>
         `;
         tableBody.insertAdjacentHTML('afterbegin', loadBook);
       });
 
+      //timbuktu.slice(0, timbuktu.length);
+      //timbuktu.push([childBooks]);
+
       console.log(childBooks);
-      console.log(bookData);
+      console.log(data);
       console.log(timbuktu);
+
     });
     console.log('Data loaded');
   });
 });
+
 
 
 // FIREBASE USER AUTHENTICATION

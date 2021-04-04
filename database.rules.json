@@ -1,6 +1,6 @@
 {
   "rules": {
-    "timbuktu": {
+    "library": {
         ".read": "true" ,
         ".write": "auth != null"
     } ,
