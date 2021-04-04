@@ -4,40 +4,40 @@ header {
 
 #saveData {
   border-radius: 5px;
-  margin-top: 2.5rem;
-  margin-right: 3rem;
-  font-size: 13px;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
 }
 
 #getData {
   border-radius: 5px;
-  margin-top: 2.5rem;
-  margin-right: 3rem;
-  font-size: 13px;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
 }
 
 #loginGit {
   border-radius: 5px;
   background-color:rgb(0, 0, 0);
-  margin-top: 2.5rem;
-  margin-right: 3rem;
-  font-size: 13px;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
 }
 
 #loginGoogle {
   border-radius: 5px;
   background-color:rgb(0, 0, 0);
-  margin-top: 2.5rem;
-  margin-right: 3rem;
-  font-size: 13px;
+  margin-top: 2rem;
+  margin-right: 1.5rem;
+  font-size: 12px;
 }
 
 #logOut {
   border-radius: 5px;
   background-color:rgb(0, 0, 0);
-  margin-top: 2.5rem;
-  margin-right: 3rem;
-  font-size: 13px;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
 }
 
 .delete {

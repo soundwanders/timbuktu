@@ -1,7 +1,7 @@
-// JavaScript Library
+// TIMBUKTU.JS //
 
-// timbuktu is the library that will hold the books/podcasts
-let timbuktu = [];
+// timbuktu is the library array
+const timbuktu = [];
 
 // Default data that is loaded into library each time page is opened
 const DEFAULT = [
@@ -59,7 +59,7 @@ const table = document.querySelector('table').addEventListener('click', (e) => {
     console.log('Deleted book from library');
   }
   if (e.target.classList.contains('format-button')) {
-    toggleformat(getBook(timbuktu, currentTarget.innerText));
+    toggleFormat(getBook(timbuktu, currentTarget.innerText));
   }
   updateLocalStorage();
   render();
@@ -78,8 +78,7 @@ function addBook () {
 }
 
 // Change format --> book or podcast
-
-function toggleformat (book) {
+function toggleFormat (book) {
   if (timbuktu[book].format === 'book') {
     timbuktu[book].format = 'podcast';
   } else timbuktu[book].format = 'book';
@@ -114,16 +113,8 @@ function updateLocalStorage () {
   localStorage.setItem('timbuktuData', JSON.stringify(timbuktu));
 }
 
-function checkLocalStorage () {
-  if (localStorage.getItem('timbuktuData')) {
-    timbuktu = JSON.parse(localStorage.getItem('timbuktuData'));
-  } else timbuktu = DEFAULT;
-}
-
 // Render table
 function render () {
-  checkLocalStorage();
-  updateLocalStorage();
   tableBody.innerHTML = '';
   timbuktu.forEach((book) => {
     const htmlBook =
@@ -142,7 +133,10 @@ function render () {
 
 render();
 
+/// ////////////////////////////
 // ________FIREBASE ________ //
+/// ////////////////////////////
+
 const firebaseConfig = {
   apiKey: 'AIzaSyBu5GPmyVRdvrxiRIw6mJ49pVzyp83BOyI',
   authDomain: 'timbuktu-42c57.firebaseapp.com',
@@ -155,26 +149,28 @@ const firebaseConfig = {
 };
 
 const database = firebase.database();
-const rootRef = database.ref('/library/');
+const rootRef = database.ref('/timbuktu/');
 const autoId = rootRef.push().key;
-const userId = firebase.auth().currentUser;
+const user = firebase.auth().currentUser;
 
 // FIREBASE REALTIME DATABASE
-// Delete old data, Create new database entry
+// Save Data Button
 const saveButton = document.getElementById('saveData').addEventListener('click', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
 
-  // REMOVE old data
-  rootRef.child(autoId).remove();
-  // SAVE new data
-  rootRef.child(autoId).set({
-    timbuktu: JSON.stringify(timbuktu)
-  });
+  // if authorized user, remove their old data before saving new data
+  rootRef.child('/timbuktu/').remove();
+
+  // save data under authorized user's id, else save under unique key if no uid
+  rootRef.child(user ?? autoId).set({
+   book: JSON.stringify(timbuktu)
+  })
   console.log('Saved new data to database');
 });
 
-// LOAD database (takes a snapshot of the referenced data, then parse to timbuktu array);
+// LOAD database button
+// Get snapshot of data from database and generate HTML elements to display library on page
 const getData = document.getElementById('getData').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
@@ -183,19 +179,30 @@ const getData = document.getElementById('getData').addEventListener('click', (e)
     snapshot.forEach((childSnapshot) => {
       const childBooks = childSnapshot.val();
       const bookData = JSON.stringify(childBooks);
-      const parseData = JSON.parse(bookData);
 
-      // CHILDBOOKS AND PARSEDATA RETURN THE SAME OBJECT 'TIMBUKTU'
-      // FIGURE OUT HOW TO GET TIMBUKTU'S PROPERTIES AND PUSH THEM TO ARRAY
+      tableBody.innerHTML = '';
+      timbuktu.forEach((Object) => {
+        const loadBook =
+        `)
+          <tr>
+            <td>${this.civilization}</td>
+            <td>${this.title}</td>
+            <td>${this.author}</td>
+            <td><button class="format-button">${this.format}</button></td>
+            <td><button class="delete">x</button></td>
+          </tr>
+        `;
+        tableBody.insertAdjacentHTML('afterbegin', loadBook);
+      });
 
-      timbuktu.slice(0);
-      timbuktu.push(parseData);
       console.log(childBooks);
-      console.log(parseData);
+      console.log(bookData);
+      console.log(timbuktu);
     });
     console.log('Data loaded');
   });
 });
+
 
 // FIREBASE USER AUTHENTICATION
 // Log in with Google
@@ -207,12 +214,14 @@ const logInGoogle = document.getElementById('loginGoogle').addEventListener('cli
   firebase.auth().signInWithPopup(google).then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
     const credential = result.credential;
-    // This gives you a GitHub Access Token.
+    // This gives you a Google Access Token.
     const token = credential.accessToken;
     // The signed-in user info
     const user = result.user;
     // Log user info and access token to console
     console.log('User', user, 'Token', token);
+    console.log('Log-in successful');
+    console.log('user id: ' + firebase.auth().currentUser.uid);
   })
     .catch((error) => {
       const errorCode = error.code;
@@ -237,6 +246,7 @@ const logInGithub = document.getElementById('loginGit').addEventListener('click'
     // Log user info and access token to console
     console.log('User', user, 'Token', token);
     console.log('Log-in successful');
+    console.log('user id: ' + firebase.auth().currentUser.uid);
   })
     .catch((error) => {
       const errorCode = error.code;
@@ -245,12 +255,12 @@ const logInGithub = document.getElementById('loginGit').addEventListener('click'
     });
 });
 
-// Log out
+// Log out of the Timbuktu web app
 const logout = document.getElementById('logOut').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
 
-  // Try to log out of Google
+  // Try to log out, else catch error on failure
   try {
     firebase.auth().signOut().then(() => {
       console.log('Signed out successfully');

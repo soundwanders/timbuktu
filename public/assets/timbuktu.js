@@ -151,6 +151,7 @@ const firebaseConfig = {
 const database = firebase.database();
 const rootRef = database.ref('/timbuktu/');
 const autoId = rootRef.push().key;
+const user = firebase.auth().currentUser;
 
 // FIREBASE REALTIME DATABASE
 // Save Data Button
@@ -158,21 +159,18 @@ const saveButton = document.getElementById('saveData').addEventListener('click',
   e.preventDefault();
   e.stopImmediatePropagation();
 
-  rootRef.child(autoId).set({
-    timbuktu: (JSON.stringify(timbuktu[{
-      civilization: civilization.value,
-      title: title.value,
-      author: author.value,
-      format: format.value
-    }])
-    )
-  });
+  // if authorized user, remove their old data before saving new data
+  rootRef.child('/timbuktu/').remove();
+
+  // save data under authorized user's id, else save under unique key if no uid
+  rootRef.child(user ?? autoId).set({
+   book: JSON.stringify(timbuktu)
+  })
   console.log('Saved new data to database');
-  console.log(timbuktuArray.value);
 });
 
 // LOAD database button
-// (takes a snapshot of the referenced data, then push to timbuktu array)
+// Get snapshot of data from database and generate HTML elements to display library on page
 const getData = document.getElementById('getData').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
@@ -182,13 +180,29 @@ const getData = document.getElementById('getData').addEventListener('click', (e)
       const childBooks = childSnapshot.val();
       const bookData = JSON.stringify(childBooks);
 
-      timbuktu.push(bookData);
+      tableBody.innerHTML = '';
+      timbuktu.forEach((Object) => {
+        const loadBook =
+        `)
+          <tr>
+            <td>${this.civilization}</td>
+            <td>${this.title}</td>
+            <td>${this.author}</td>
+            <td><button class="format-button">${this.format}</button></td>
+            <td><button class="delete">x</button></td>
+          </tr>
+        `;
+        tableBody.insertAdjacentHTML('afterbegin', loadBook);
+      });
+
       console.log(childBooks);
       console.log(bookData);
+      console.log(timbuktu);
     });
     console.log('Data loaded');
   });
 });
+
 
 // FIREBASE USER AUTHENTICATION
 // Log in with Google

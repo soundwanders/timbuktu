@@ -194,7 +194,7 @@ input[type="button"] {
   border: 1px solid rgb(75, 10, 85);
   cursor: pointer;
   box-sizing: border-box;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .button:hover,
@@ -366,7 +366,7 @@ th {
   font-family: "Yatra One", "Nunito" , "Helvetica", sans-serif;
   color: rgb(0, 0, 0);
   text-align: left;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   padding-left: 1rem;
   padding-bottom: 1rem;
   font-size: 3rem;
