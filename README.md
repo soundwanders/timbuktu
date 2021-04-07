@@ -11,7 +11,7 @@
     - Books are created as objects using a constructor and then pushed to the array.
     - The book object's 'format' property is assigned through a Select field with two options -> Book, Podcast   
   - I used Skeleton CSS to achieve a clean, responsive design that would work on both mobile and pc.
-    - I enjoyed having the challenge of exploring an unfamiliar framework and implementing a boilerplate framework.
+    - I enjoyed the challenge of exploring a new framework and working with a boilerplate
   - The first version of the project that implemented a default data set saved and loaded through use of localStorage and JSON.
   - Once that was complete, I had the idea to create a database connected to the page with CRUD functionality.
   - The goal was to create a full-stack application, deployed with Firebase, that contains a realtime database and the ability to save and retrieve each authenticated user's data in such a way that they can only access their data and nobody else can read/write over it.
