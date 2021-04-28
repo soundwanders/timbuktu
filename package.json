@@ -5,7 +5,6 @@
   "type": "module",
   "main": "timbuktu.js",
   "devDependencies": {
-    "esmify": "^2.1.1",
     "semistandard": "*"
   },
   "scripts": {
@@ -26,9 +25,6 @@
   },
   "homepage": "https://github.com/soundwanders/timbuktu#readme",
   "dependencies": {
-    "axios": "^0.21.1",
-    "browserify": "^17.0.0",
-    "express": "^4.17.1",
     "firebase": "^8.3.2",
     "node.js": "^0.0.1-security",
     "semistandard": "^16.0.0"
