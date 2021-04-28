@@ -3,8 +3,8 @@
 // timbuktu is the library array
 let timbuktu = [];
 
+
 // Default data that is loaded into library each time page is opened
-/*
 const DEFAULT = [
   { civilization: 'Chinese', title: 'The China History Podcast', author: 'Laszlo Montgomery', format: 'podcast' },
   {
@@ -19,7 +19,7 @@ const DEFAULT = [
   { civilization: 'Romans', title: 'The History of Rome', author: 'Mike Duncan', format: 'podcast' },
   { civilization: 'Sassanids', title: 'Sassanian Persia', author: 'Touraj Daryaee', format: 'book' }
 ];
-*/
+
 
 // Book properties
 const civilization = document.querySelector('#civilization');
@@ -28,7 +28,7 @@ const author = document.querySelector('#author');
 const format = document.querySelector('#format');
 const tableBody = document.querySelector('#table-body');
 
-// Create Object 'book' with parameters for civilization, title, author and format
+// Create class 'Book' with properties for civilization, title, author and format
 class Book {
   constructor (civilization, title, author, format) {
     this.civilization = civilization;
@@ -76,22 +76,21 @@ function addBook () {
   const newBook = new Book(civilization.value, title.value, author.value, format.value);
   timbuktu.push(newBook);
   updateLocalStorage();
-  console.log('Added new materials to your library.');
+  console.log(`Successfully added ${title.value} to your library.`);
 }
 
-// Change format --> book or podcast
+// Change format
 function toggleFormat (book) {
   if (timbuktu[book].format === 'book') {
     timbuktu[book].format = 'podcast';
   } else timbuktu[book].format = 'book';
 }
 
-// Splice to delete book from library
 function deleteBook (currentBook) {
   timbuktu.splice(currentBook, currentBook + 1);
 }
 
-// Loop through array to find book
+// Loop through array to find book title
 function getBook (timbuktuArray, title) {
   if (timbuktuArray.length === 0 || timbuktuArray === null) {
     return;
@@ -103,7 +102,7 @@ function getBook (timbuktuArray, title) {
   }
 }
 
-// Clear input form on new book submission
+// Clear input forms whenever new book/podcast is submitted
 function clearForm () {
   civilization.value = '';
   title.value = '';
@@ -117,27 +116,30 @@ function updateLocalStorage () {
 
 // Render table
 function render () {
-  tableBody.innerHTML = '';
-  timbuktu.forEach((book) => {
-    const htmlBook =
-    `
-      <tr>
-        <td>${book.civilization}</td>
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td><button class="format-button">${book.format}</button></td>
-        <td><button class="delete">x</button></td>
-      </tr>
-    `;
-    tableBody.insertAdjacentHTML('afterbegin', htmlBook);
-  });
-}
+  if (timbuktu.length === 0) timbuktu = DEFAULT;
 
-render();
+  else {
+    tableBody.innerHTML = '';
 
-/// ////////////////////////////
-// ________FIREBASE ________ //
-/// ////////////////////////////
+    timbuktu.forEach((book) => {
+      const htmlBook =
+      `
+        <tr>
+          <td>${book.civilization}</td>
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td><button class="format-button">${book.format}</button></td>
+          <td><button class="delete">x</button></td>
+        </tr>
+      `
+      tableBody.insertAdjacentHTML('afterbegin', htmlBook);
+    })
+  }
+};
+
+/////////////////////////////////
+// ________ FIREBASE ________ ///
+/////////////////////////////////
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBu5GPmyVRdvrxiRIw6mJ49pVzyp83BOyI',
@@ -161,73 +163,92 @@ const saveButton = document.getElementById('saveData').addEventListener('click',
   e.preventDefault();
   e.stopImmediatePropagation();
 
-  // if authorized user, remove old data before saving new data
-  rootRef.child("timbuktu").remove();
+  if (user) {
+    // will only pass if user has database access, removes old data before saving new
+    rootRef.child("timbuktu").remove();
 
-  // save data under authorized user's id, else save under unique key if no uid
-  rootRef.child("timbuktu").set({
-  book: JSON.stringify(timbuktu) ,
-  })
-  console.log('Saved new data to database');
+    // save data allowed if authorized user is logged in (see database.rules)
+    rootRef.child("timbuktu").set ({
+      book: JSON.stringify(timbuktu) ,
+    })
+    .catch ((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('Error occurred' , errorCode , errorMessage);
+    })
+    console.log('Saved new data to database');
+  }
 });
 
-// LOAD database button
-// Get snapshot of data from database and generate HTML elements to display library on page
+// Load Data Button
 const getData = document.getElementById('getData').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
 
-  rootRef.once('value', (snapshot) => {
-    snapshot.forEach((childSnapshot) => {
+ rootRef.once('value', (snapshot) => {
+     snapshot.forEach((childSnapshot) => {
+      const stringifyData = JSON.stringify(childSnapshot.val());
+      const reload = JSON.parse(stringifyData);
+
+      const newArray = [];
+      newArray.push(reload);
       
-      const childBooks = childSnapshot.val();
-      const data = childSnapshot.exportVal();
-      const newBook = new Book(childBooks.civilization , childBooks.title , childBooks.author , childBooks.format);
-      console.log(newBook);
-      
-      timbuktu.splice(0, timbuktu.length);
-      timbuktu.push(newBook);
+      console.log("-------newArray------")
+      console.log(newArray);
 
-      tableBody.innerHTML = '';
-      timbuktu.forEach((newBook) => {
-        const loadBook =
-        `)
-          <tr>  
-            <td>${newBook.civilization}</td>
-            <td>${newBook.title}</td>
-            <td>${newBook.author}</td>
-            <td><button class="format-button">${newBook.format}</button></td>
-            <td><button class="delete">x</button></td>
-          </tr>
-        `;
-        tableBody.insertAdjacentHTML('afterbegin', loadBook);
-      });
+      timbuktu.splice(0);
+      timbuktu.push(newArray);
 
-      //timbuktu.slice(0, timbuktu.length);
-      //timbuktu.push([childBooks]);
-
-      console.log(childBooks);
-      console.log(data);
+      console.log("-------timbuktu------")
       console.log(timbuktu);
 
-    });
-    console.log('Data loaded');
-  });
+      render();
+    })
+    console.log('Loaded' , user , 'data from the Firebase database');
+  }) 
 });
 
+
+/**
+* 
+* FIREBASE LOAD ARRAY example ... 
+var events = [];
+var databaseRef = database.ref("events").orderByChild("date");
+
+databaseRef.on('child_added', function(snapshot) {
+  var event = snapshot.val(); 
+
+  // add the event to the UI
+  var elm = document.createElement('li');
+  elm.id = 'event-'+snapshot.key;
+  elm.innerText = event.title;
+  document.querySelector('#event-list').appendChild(elm);
+
+  // add the event to our list
+  events.push({
+    title: event.title, 
+    content: event.content
+  });
+
+  // update/recalculate our avg event duration
+  calculateAverageEventDuration(events);
+});
+
+*/
 
 
 // FIREBASE USER AUTHENTICATION
 // Log in with Google
-const logInGoogle = document.getElementById('loginGoogle').addEventListener('click', (e) => {
+const loginGoogle = document.getElementById('loginGoogle').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
-  const google = new firebase.auth.GoogleAuthProvider();
 
+  const google = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(google).then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
+    // get firebase Auth credential
     const credential = result.credential;
-    // This gives you a Google Access Token.
+    // get Google Access Token.
     const token = credential.accessToken;
     // The signed-in user info
     const user = result.user;
@@ -240,23 +261,23 @@ const logInGoogle = document.getElementById('loginGoogle').addEventListener('cli
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log('Error occurred on Google login', errorCode, errorMessage);
-    });
+    })
+  document.getElementById('loginGoogle').innerHTML = '';
+  document.getElementById('loginGoogle').value = 'Signed In';
 });
 
 // Log in with Github
-const logInGithub = document.getElementById('loginGit').addEventListener('click', (e) => {
+const loginGithub = document.getElementById('loginGithub').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
-  const github = new firebase.auth.GithubAuthProvider();
 
+  const github = new firebase.auth.GithubAuthProvider();
   firebase.auth().signInWithPopup(github).then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
+
     const credential = result.credential;
-    // This gives you a GitHub Access Token.
     const token = credential.accessToken;
-    // The signed-in user info
     const user = result.user;
-    // Log user info and access token to console
     console.log('User', user, 'Token', token);
     console.log('Log-in successful');
     console.log('user id: ' + firebase.auth().currentUser.uid);
@@ -265,7 +286,9 @@ const logInGithub = document.getElementById('loginGit').addEventListener('click'
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log('Error occurred on Github login', errorCode, errorMessage);
-    });
+    })
+    document.getElementById('loginGithub').innerHTML = '';
+    document.getElementById('loginGithub').value = 'Signed In';
 });
 
 // Log out of the Timbuktu web app
@@ -273,7 +296,6 @@ const logout = document.getElementById('logOut').addEventListener('click', (e) =
   e.preventDefault;
   e.stopImmediatePropagation;
 
-  // Try to log out, else catch error on failure
   try {
     firebase.auth().signOut().then(() => {
       console.log('Signed out successfully');
@@ -283,4 +305,8 @@ const logout = document.getElementById('logOut').addEventListener('click', (e) =
     const errorMessage = error.message;
     console.log('Error occurred on logout', errorCode, errorMessage);
   }
+  document.getElementById('loginGoogle').innerHTML = '';
+  document.getElementById('loginGithub').innerHTML = '';
+  document.getElementById('loginGoogle').value = 'Sign in to Google';
+  document.getElementById('loginGithub').value = 'Sign in to Github';
 });

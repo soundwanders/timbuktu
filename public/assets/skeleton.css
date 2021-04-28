@@ -218,7 +218,7 @@ input[type="reset"].button-primary,
 
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #12c6fd;
+  background-color: rgb(75, 10, 85);
   border: none;
   margin-right: 10rem;
   margin-top: 2.5rem;
@@ -236,8 +236,8 @@ input[type="reset"].button-primary:focus,
 
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #31cfff;
-  border-color: #31cfff;
+  background-color: #fff0d7;
+  border-color: #fff0d7;
 }
 
 
@@ -438,7 +438,7 @@ form {
   float: left; }
 
 .u-pull-left:hover {
-opacity: 50%; }
+opacity: 80%; }
 
 
 /* Misc
