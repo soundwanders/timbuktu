@@ -116,7 +116,7 @@ function checkLocalStorage () {
   } else timbuktu = DEFAULT;
 }
 
-// RENDER checks then updates local storage, sorts array alphabetically
+// RENDER checks then updates local storage if data is stored
 // htmlBook variable is created for each book in the timbuktu library
 function render () {
   checkLocalStorage();
@@ -137,5 +137,10 @@ function render () {
 })};
 
 render();
-// Sort array's default data on page load
-DEFAULT.sort().reverse();
+
+const save = document.querySelector('save').addEventListener('click' , (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
+  updateLocalStorage();
+  console.log("Data manually saved");
+});
