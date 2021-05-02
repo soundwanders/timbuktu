@@ -2,10 +2,22 @@ header {
   position: relative;
 }
 
+table tr td {
+  vertical-align: middle;
+}
+
+th:nth-child(2) {
+  padding-left: 2rem;
+}
+
+th:nth-child(3) {
+  padding-left: 2rem;
+}
+
 .icons {
-  display: block;
+  display: table-header-group;
   transform: scale(0.4);
-  margin-left: 3vw;
+  float: right;
 }
 .icons:hover {
   transition: all .2s ease-in-out;
@@ -51,9 +63,9 @@ header {
 }
 
 #delete {
+  float: right;
   width: 35px;
   height: 35px;
-  float: right;
   background-color: #ff5452;
   color: #fff;
   font-family: 'Zen Dots', cursive;
@@ -62,11 +74,11 @@ header {
   font-weight: lighter !important;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
   border: none;
   border-radius: 6rem;
   padding: 0;
   opacity: 0.95;
+  margin-right: 4rem;
 }
 
 #delete:hover {
@@ -78,17 +90,28 @@ header {
 
 @media (min-width: 400px) and (max-width: 992px) {
   header { text-size-adjust: none; -moz-text-size-adjust:none; -webkit-text-size-adjust: none; }
-  h1 { font-size: 3.0rem; margin-top: 2%; }
+  h1 { font-size: 3.0rem; margin-top: auto; }
   p { font-size: 16px; margin-bottom: 0; }
   th { font-size: 24px; padding-right: 8vw; }
+  td { font-size: 16px; }
   select { min-width: 15vw; }
   input[type = submit] { margin: 0; font-size: 12px; max-height: 3rem; width: auto; line-height: 3rem; }
-  #loginGoogle { font-size: 8px; }
-  #loginGithub { font-size: 8px; }
-  #saveData { font-size: 8px; }
-  #getData { font-size: 8px; }
-  #logOut { font-size: 8px; }
   #submitBook { margin-left: 15px; margin-bottom: 5px; }
   #delete { margin-left: 10vw; }
-  td { font-size: 16px; }
+  #headRow { margin-top: auto; }
+  #format { min-width: 10vw; }
+  button:nth-child(1) { font-size: 16px }
+}
+
+
+@media (min-width: 400px) and (max-width: 992) and (orientation: landscape) {
+  #submitBook { margin-left: 7vw; }
+  #format { min-width: 15vw; }
+  button:nth-child(1) { font-size: 12px }
+}
+
+@media (min-width: 400px) and (max-width: 1200px) and (orientation: landscape) {
+  #submitBook { margin-left: 7rem}
+  #format { min-width: 15vw; }
+  button:nth-child(1) { font-size: 12px }
 }
