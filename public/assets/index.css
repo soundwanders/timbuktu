@@ -94,13 +94,18 @@ th:nth-child(3) {
   p { font-size: 16px; margin-bottom: 0; }
   th { font-size: 24px; padding-right: 8vw; }
   td { font-size: 16px; }
+  button:nth-child(1) { font-size: 16px }
   select { min-width: 15vw; }
   input[type = submit] { margin: 0; font-size: 12px; max-height: 3rem; width: auto; line-height: 3rem; }
   #submitBook { margin-left: 15px; margin-bottom: 5px; }
   #delete { margin-left: 10vw; }
   #headRow { margin-top: auto; }
   #format { min-width: 10vw; }
-  button:nth-child(1) { font-size: 16px }
+  #loginGoogle { font-size: 8px; }
+  #loginGithub { font-size: 8px; }
+  #logOut { font-size: 8px; }
+  #saveData { font-size: 8px; }
+  #getData { font-size: 8px; }
 }
 
 
