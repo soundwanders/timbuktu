@@ -78,7 +78,7 @@ header {
 
 @media (min-width: 400px) and (max-width: 992px) {
   header { text-size-adjust: none; -moz-text-size-adjust:none; -webkit-text-size-adjust: none; }
-  h1 { font-size: 3.0rem; margin-top: 2%; }
+  h1 { font-size: 3.0rem; margin-top: 4%;  padding-top: 4%; }
   p { font-size: 16px; margin-bottom: 0; }
   th { font-size: 24px; padding-right: 8vw; }
   select { min-width: 15vw; }
