@@ -172,9 +172,6 @@ const saveButton = document.getElementById('saveData').addEventListener('click',
 });
 
 // Load Data Button
-
-
-// Load Data Button
 const getData = document.getElementById('getData').addEventListener('click', (e) => {
   e.preventDefault;
   e.stopImmediatePropagation;
