@@ -1,4 +1,45 @@
-/* CSS */
+header {
+  position: relative;
+  margin-top: 2%;
+}
+
+#saveData {
+  border-radius: 5px;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
+}
+
+#getData {
+  border-radius: 5px;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
+}
+
+#loginGithub {
+  border-radius: 5px;
+  background-color:rgb(0, 0, 0);
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
+}
+
+#loginGoogle {
+  border-radius: 5px;
+  background-color:rgb(0, 0, 0);
+  margin-top: 2rem;
+  margin-right: 1.5rem;
+  font-size: 12px;
+}
+
+#logOut {
+  border-radius: 5px;
+  background-color:rgb(0, 0, 0);
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-size: 12px;
+}
 
 #delete {
   font-family: 'Zen Dots', cursive;
@@ -26,15 +67,17 @@
   color: white;
 }
 
-header {
-  position: relative;
-  padding-top: 2rem;
-}
-
-#login {
-  margin-right: 4rem;
-}
-
-#register {
-  margin-right: 5rem;
+@media (min-width: 400px) and (max-width: 992px) {
+  header { text-size-adjust: none; -moz-text-size-adjust:none; -webkit-text-size-adjust: none; }
+  h1 { font-size: 2.0rem; margin-top: 2%; }
+  p { font-size: 16px; }
+  select { min-width: 10vw; }
+  input[type = submit] { margin: 0; font-size: 10px; max-height: 3rem; width: auto; padding-left: 10px; padding-right: 10px; line-height: 3rem; }
+  p { margin-bottom: 0; }
+  #loginGoogle { font-size: 8px; }
+  #loginGithub { font-size: 8px; }
+  #saveData { font-size: 8px; }
+  #getData { font-size: 8px; }
+  #logOut { font-size: 8px; }
+  #submitBook { margin-left: 15px; margin-bottom: 5px; }
 }
