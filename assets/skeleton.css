@@ -124,7 +124,7 @@ body {
   background-color: #fff0d7;
   font-size: 18px; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 600;
   font-family: "Nunito", "Helvetica", sans-serif;
   color: #222; }
 
@@ -132,7 +132,7 @@ body {
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
-  margin-top: -50px;
+  margin-top: -30px;
   margin-bottom: 2rem;
   font-weight: 600;
 }
@@ -175,7 +175,7 @@ input[type="button"] {
   padding: 0 20px;
   color: #FFF;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 38px;
   letter-spacing: 2px;
@@ -362,7 +362,7 @@ th {
   text-align: left;
   padding-top: 1rem;
   padding-left: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: -50vw;
   font-size: 3rem;
   font-weight: 600;
   border-bottom: 1px solid #D1D1D1;
@@ -372,7 +372,8 @@ td {
   text-align: left;
   padding: 10px 15px;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 500;
+  font-family: "Nunito" , "Helvetica" , sans-serif;
   left: 10%;
   border-bottom: 1px solid #D1D1D1;
 }
@@ -454,12 +455,3 @@ hr {
   content: "";
   display: table;
   clear: both; }
-
-  @media (min-width: 400px) and (max-width: 768px) {
-    h1 { font-size: 2.0rem; margin-top: -5%; }
-    p { font-size: 16px; }
-    select { min-width: 10vw; }
-    #submitBook { font-size: 14px; }
-    input { font-size: 14px; }
-    select { font-size: 14px; }
-  }
