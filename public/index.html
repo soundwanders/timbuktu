@@ -6,106 +6,103 @@
 <meta name="description" content="makehero"/>
 <meta name="author" content=""/>
 
-<head>
-    <title>Timbuktu</title>
+<title>Timbuktu</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap:wght@400, 600, 700" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet"> 
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="shortcut icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/assets/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/index.css">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/assets/index.css">
+<link rel="stylesheet" type="text/css" href="assets/normalize.css" />
+<link rel="stylesheet" type="text/css" href="assets/skeleton.css" />
+<link rel="stylesheet" type="text/css" href="assets/index.css">
+<link rel="stylesheet" type="text/css" href="/assets/index.css">
 
-    <!--____________________FIREBASE____________________-->
-    <!-- Firebase JavaScript SDK is required and must be listed first -->
-    <script src="/__/firebase/8.2.9/firebase-app.js"></script>
-    <script src="/__/firebase/8.2.9/firebase-analytics.js"></script>
-    <script src="/__/firebase/8.2.8/firebase-auth.js"></script>
-    <script src="/__/firebase/8.2.8/firebase-database.js"></script>
-    <script src="/__/firebase/8.2.8/firebase-storage.js"></script>
-    <!-- Load the Firebase SDKs before loading the init file -->
-    <script src="/__/firebase/init.js"></script>
+<!--____________________FIREBASE____________________-->
+<!-- Firebase JavaScript SDK is required and must be listed first -->
+<script src="/__/firebase/8.2.9/firebase-app.js"></script>
+<script src="/__/firebase/8.2.9/firebase-analytics.js"></script>
+<script src="/__/firebase/8.2.8/firebase-auth.js"></script>
+<script src="/__/firebase/8.2.8/firebase-database.js"></script>
+<script src="/__/firebase/8.2.8/firebase-storage.js"></script>
+<!-- Load the Firebase SDKs before loading the init file -->
+<script src="/__/firebase/init.js"></script>
 
 </head>
 
 <div class="container">
 
-    <header>
-        <div class="row" id="nav">
-            <input type="submit" class="button u-pull-left" id="saveData" value="Save" title="Manually save data to database"/>
-            <input type="submit" class="button u-pull-left" id="getData" value="Load" title="Manually load data from database"/>
+<header>
+    <div class="row" id="nav">
+        <input type="submit" class="button u-pull-left" id="saveData" value="Save" title="Manually save data to database"/>
+        <input type="submit" class="button u-pull-left" id="getData" value="Load" title="Manually load data from database"/>
 
-            <input type="submit" class="button u-pull-left" id="loginGithub" value="Sign In with Github"/>
-            <input type="submit" class="button u-pull-left" id="loginGoogle" value="Sign In with Google"/>
-            <input type="submit" class="button u-pull-left" id="logOut" value="Log Out"/>
+        <input type="submit" class="button u-pull-left" id="loginGithub" value="Sign In with Github"/>
+        <input type="submit" class="button u-pull-left" id="loginGoogle" value="Sign In with Google"/>
+        <input type="submit" class="button u-pull-left" id="logOut" value="Log Out"/>
+    </div>
+</header>
+
+<body>
+    <div class="row">
+        <div class="twelve column" style="margin-top: 10%;">
+        <h1>Library of Timbuktu</h1>
+        <p>A collection of books & podcasts on ancient civilizations</p>
         </div>
-    </header>
+    </div>
 
-    <body>
-
-        <div class="row">
-            <div class="twelve column" style="margin-top: 10%;">
-            <h1>Library of Timbuktu</h1>
-            <p>
-                A collection of books & podcasts on ancient civilizations
-            </p>
+    <div class="row">
+        <form action="">
+            <div class="three columns">
+            <label for="civilization">Civilization</label>
+            <input class="u-full-width" id="civilization" type="text"/>
             </div>
+
+            <div class="three columns">
+            <label for="title">Title</label>
+            <input class="u-full-width" id="title" type="text"/>
+            </div>
+
+            <div class="three columns">
+            <label for="author">Author</label>
+            <input class="u-full-width" id="author" type="text"/>
+            </div>
+
+        <div class="two columns">
+            <label for="format">Format</label>
+            <select class="u-full-width" id="format" name="format">
+                <option value="book">Book</option>
+                <option value="podcast">Podcast</option>
+            </select>
         </div>
-
-        <div class="row">
-            <form action="">
-                <div class="three columns">
-                <label for="civilization">Civilization</label>
-                <input type="text" id="civilization" class="u-full-width"/>
-                </div>
-
-                <div class="three columns">
-                <label for="title">Title</label>
-                <input type="text" id="title" class="u-full-width" id="title"/>
-                </div>
-
-                <div class="three columns">
-                <label for="author">Author</label>
-                <input type="text" id="author" class="u-full-width"/>
-                </div>
-
-                <div class="two columns">
-                    <label for="format">Format</label>
-                    <select name="format" id="format" class="u-full-width">
-                        <option value="book">Book</option>
-                        <option value="podcast">Podcast</option>
-                    </select>
-                </div>
-                    <div class="one columns">
-                    <input type="submit" value="Submit" class="button-primary"/>
-                </div>
-            </form>
+        <div class="one columns">
+        <input class="button-primary" id="submitBook" type="submit" value="Submit"/>
+        </form>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="twelve columns"></div>
+    <div class="row">
+        <div class="twelve columns"></div>
 
-            <table class="twelve columns">
-                <tr>
-                    <th>Civilization</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Format</th>
-                    <th></th>
-                </tr>
-                <tbody id="table-body"></tbody>
-            </table>
-        </div>
-
-    <script type="text/javascript" src="assets/timbuktu.js"></script>
-
-    </body>
+        <table class="twelve columns table">
+            <tr>
+                <th>Civilization</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Format</th>
+                <th></th>
+            </tr>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
 </div>
+
+<script type="text/javascript" src="assets/timbuktu.js"></script>
+
+</body>
 
 </html>

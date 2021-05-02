@@ -28,7 +28,7 @@ const author = document.querySelector('#author');
 const format = document.querySelector('#format');
 const tableBody = document.querySelector('#table-body');
 
-// Create class 'Book' with properties for civilization, title, author and format
+// Construct object with class book
 class Book {
   constructor (civilization, title, author, format) {
     this.civilization = civilization;
@@ -36,10 +36,9 @@ class Book {
     this.author = author;
     this.format = format;
   }
-}
+};
 
 // On form submit => Add new book into array, render book to table, clear forms
-// stopImmediatePropagation() method prevents other listeners of the same event from being called
 const form = document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -53,9 +52,8 @@ const table = document.querySelector('table').addEventListener('click', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
 
-  // target the "title" field inside array
+  // target "title" field inside array
   const currentTarget = e.target.parentNode.parentNode.childNodes[3];
-
   if (e.target.innerHTML == 'x') {
     if (confirm(`Are you sure you want to delete ${currentTarget.innerText}`)) { deleteBook(getBook(timbuktu, currentTarget.innerText)); }
     console.log('Deleted book from library');
@@ -64,7 +62,6 @@ const table = document.querySelector('table').addEventListener('click', (e) => {
     toggleFormat(getBook(timbuktu, currentTarget.innerText));
   }
   updateLocalStorage();
-  render();
 });
 
 // Add new book into the library
@@ -77,6 +74,7 @@ function addBook () {
   timbuktu.push(newBook);
   updateLocalStorage();
   console.log(`Successfully added ${title.value} to your library.`);
+  console.log(timbuktu);
 }
 
 // Change format
@@ -84,11 +82,11 @@ function toggleFormat (book) {
   if (timbuktu[book].format === 'book') {
     timbuktu[book].format = 'podcast';
   } else timbuktu[book].format = 'book';
-}
+};
 
 function deleteBook (currentBook) {
   timbuktu.splice(currentBook, currentBook + 1);
-}
+};
 
 // Loop through array to find book title
 function getBook (timbuktuArray, title) {
@@ -100,41 +98,37 @@ function getBook (timbuktuArray, title) {
       return timbuktuArray.indexOf(book);
     }
   }
-}
+};
 
 // Clear input forms whenever new book/podcast is submitted
 function clearForm () {
   civilization.value = '';
   title.value = '';
   author.value = '';
-}
+};
 
 // Local Storage
 function updateLocalStorage () {
   localStorage.setItem('timbuktuData', JSON.stringify(timbuktu));
-}
+};
 
 // Render table
 function render () {
-  if (timbuktu.length === 0) timbuktu = DEFAULT;
+  tableBody.innerHTML = '';
 
-  else {
-    tableBody.innerHTML = '';
-
-    timbuktu.forEach((book) => {
-      const htmlBook =
-      `
-        <tr>
-          <td>${book.civilization}</td>
-          <td>${book.title}</td>
-          <td>${book.author}</td>
-          <td><button class="format-button">${book.format}</button></td>
-          <td><button class="delete">x</button></td>
-        </tr>
-      `
-      tableBody.insertAdjacentHTML('afterbegin', htmlBook);
-    })
-  }
+  timbuktu.forEach((book) => {
+    const htmlBook =
+    `
+      <tr>
+        <td>${book.civilization}</td>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td><button class="format-button">${book.format}</button></td>
+        <td><button class="delete">x</button></td>
+      </tr>
+    `
+    tableBody.insertAdjacentHTML('afterbegin', htmlBook);
+  })
 };
 
 /////////////////////////////////
@@ -153,9 +147,9 @@ const firebaseConfig = {
 };
 
 const database = firebase.database();
-const rootRef = database.ref('/library/');
-const autoId = rootRef.push().key;
+const rootRef = database.ref('/data/');
 const user = firebase.auth().currentUser;
+// const autoId = rootRef.push().key;
 
 // FIREBASE REALTIME DATABASE
 // Save Data Button
@@ -163,22 +157,22 @@ const saveButton = document.getElementById('saveData').addEventListener('click',
   e.preventDefault();
   e.stopImmediatePropagation();
 
-  if (user) {
-    // will only pass if user has database access, removes old data before saving new
-    rootRef.child("timbuktu").remove();
+  rootRef.child("library").remove();
 
-    // save data allowed if authorized user is logged in (see database.rules)
-    rootRef.child("timbuktu").set ({
-      book: JSON.stringify(timbuktu) ,
+  // save data allowed if authorized user logged in (see database.rules)
+    rootRef.child("library").set ({
+      book: JSON.stringify(timbuktu) ,  
     })
     .catch ((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log('Error occurred' , errorCode , errorMessage);
     })
-    console.log('Saved new data to database');
-  }
+  console.log('Saved new data to database');
 });
+
+// Load Data Button
+
 
 // Load Data Button
 const getData = document.getElementById('getData').addEventListener('click', (e) => {
@@ -187,31 +181,42 @@ const getData = document.getElementById('getData').addEventListener('click', (e)
 
  rootRef.once('value', (snapshot) => {
      snapshot.forEach((childSnapshot) => {
-      const stringifyData = JSON.stringify(childSnapshot.val());
+      const snap = snapshot.exportVal();
+      const stringifyData = JSON.stringify(childSnapshot.exportVal());
       const reload = JSON.parse(stringifyData);
 
       const newArray = [];
       newArray.push(reload);
       
+      
       console.log("-------newArray------")
       console.log(newArray);
+      console.log("------snap------")
+      console.log(snap);
 
-      timbuktu.splice(0);
-      timbuktu.push(newArray);
+        tableBody.innerHTML = '';
 
-      console.log("-------timbuktu------")
-      console.log(timbuktu);
-
-      render();
-    })
-    console.log('Loaded' , user , 'data from the Firebase database');
+        newArray.forEach((book) => {
+          const htmlBook =
+          `
+            <tr>
+              <td>${book.civilization}</td>
+              <td>${book.title}</td>
+              <td>${book.author}</td>
+              <td><button class="format-button">${book.format}</button></td>
+              <td><button class="delete">x</button></td>
+            </tr>
+          `
+          tableBody.insertAdjacentHTML('afterbegin', htmlBook);
+        })
+      })
+    console.log('Loaded data from the Firebase database');
   }) 
 });
 
 
 /**
-* 
-* FIREBASE LOAD ARRAY example ... 
+// FIREBASE LOAD ARRAY example ... 
 var events = [];
 var databaseRef = database.ref("events").orderByChild("date");
 
@@ -232,6 +237,79 @@ databaseRef.on('child_added', function(snapshot) {
 
   // update/recalculate our avg event duration
   calculateAverageEventDuration(events);
+});
+
+*/
+
+/**
+const getData = document.getElementById('getData').addEventListener('click', (e) => {
+  e.preventDefault;
+  e.stopImmediatePropagation;
+
+ rootRef.once('value', (snapshot) => {
+     snapshot.forEach((childSnapshot) => {
+      const stringifyData = JSON.stringify(childSnapshot.val());
+      const loadLibrary = JSON.parse(stringifyData);
+
+      timbuktu.push(loadLibrary);
+
+        for (let i = 0; i < timbuktu[0].length; i++) {
+          const htmlBook =
+          `
+            <tr>
+              <td>${timbuktu[0].civilization}</td>
+              <td>${timbuktu[0].title}</td>
+              <td>${timbuktu[0].author}</td>
+              <td><button class="format-button">${timbuktu[0].format}</button></td>
+              <td><button class="delete">x</button></td>
+            </tr>
+          `
+          tableBody.insertAdjacentHTML('afterbegin', htmlBook);
+        }
+
+      console.log("-----timbuktu-----")
+      console.log(timbuktu);
+
+       tableBody.innerHTML = '';
+
+      const keys = timbuktuArray.keys(childSnapshot.val());
+
+      console.log("-----keys-----");
+      console.log(keys);
+
+      timbuktuArray.forEach((object) => {
+
+        const htmlBook =
+        `)
+          <tr>
+            <td>${book.civilization}</td>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td><button class="format-button">${book.format}</button></td>
+            <td><button class="delete">x</button></td>
+          </tr>
+        `
+        tableBody.insertAdjacentHTML('afterbegin', htmlBook);
+      }) 
+
+      timbuktuArray.forEach((key, index) => {
+        console.log(`${key}: ${timbuktuArray[key]}`);
+
+        const htmlBook =
+        `)
+          <tr>
+            <td>${key.civilization}</td>
+            <td>${key.title}</td>
+            <td>${key.author}</td>
+            <td><button class="format-button">${key.format}</button></td>
+            <td><button class="delete">x</button></td>
+          </tr>
+        `
+        tableBody.insertAdjacentHTML('afterbegin', htmlBook);
+      })
+    })
+    console.log('Loaded user data from the Firebase database');
+  })
 });
 
 */

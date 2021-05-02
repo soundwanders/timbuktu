@@ -1,6 +1,6 @@
 {
   "rules": {
-    "library": {
+    "data": {
         ".read": "true" ,
         ".write": "auth != null"
     } ,
