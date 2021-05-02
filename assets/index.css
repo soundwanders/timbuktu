@@ -78,12 +78,13 @@ header {
 
 @media (min-width: 400px) and (max-width: 992px) {
   header { text-size-adjust: none; -moz-text-size-adjust:none; -webkit-text-size-adjust: none; }
-  h1 { font-size: 3.0rem; margin-top: 4%;  padding-top: 4%; }
+  h1 { font-size: 3.0rem; margin-top: auto; }
   p { font-size: 16px; margin-bottom: 0; }
   th { font-size: 24px; padding-right: 8vw; }
   select { min-width: 15vw; }
   input[type = submit] { margin: 0; font-size: 12px; max-height: 3rem; width: auto; line-height: 3rem; }
   #submitBook { margin-left: 15px; margin-bottom: 5px; }
   #delete { margin-left: 10vw; }
+  #headRow { margin-top: auto; }
   td { font-size: 16px; }
 }
