@@ -1,92 +1,84 @@
 <!DOCTYPE html>
 
-<html lang = "en">
-<meta charset = "utf-8">
-<meta name = "viewport" content = "width=device-width,initial-scale=1">
-<meta name = "description" content = "makehero"/>
-<meta name = "author" content = ""/>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="makehero"/>
+<meta name="author" content=""/>
 
 <title>Timbuktu</title>
 
-<link rel = "preconnect" href = "https://fonts.gstatic.com">
-<link href = "https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel = "stylesheet">
-<link href = "https://fonts.googleapis.com/css2?family=Quicksand&display=swap:wght@400, 600, 700" rel = "stylesheet"> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap:wght@400, 600, 700" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet"> 
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="shortcut icon" href="favicon.ico">
 
-<link rel = "stylesheet" type = "text/css" href = "assets/normalize.css" />
-<link rel = "stylesheet" type = "text/css" href = "assets/skeleton.css" />
-<link rel = "stylesheet" type = "text/css" href = "assets/index.css">
+<link rel="stylesheet" type="text/css" href="assets/normalize.css" />
+<link rel="stylesheet" type="text/css" href="assets/skeleton.css" />
+<link rel="stylesheet" type="text/css" href="assets/index.css">
 
-<div class = "container">
+<div class="container">
 
 <header>
-    <div class = "row">
-        <input type = "submit" class = "button u-pull-right" id = "save" value = "Save" title = "Manually save data to local storage"/>
+    <div class="row" style="margin-top: 5%;">
+        <h1>The Library of Timbuktu</h1>
+        <p> A collection of books & podcasts covering ancient civilizations </p>
     </div>
 </header>
 
 <body>
 
-   <div class = "row">
-        <div class = "twelve column" style = "margin-top: 10%;">
-          <h1>The Library of Timbuktu</h1>
-          <p>
-            A collection of books & podcasts covering ancient civilizations
-          </p>
-        </div>
-    </div>
-
-    <div class = "row">
-        <form action = "">
-            <div class = "three columns">
-            <label for = "civilization">Civilization</label>
-            <input type = "text" id = "civilization" class = "u-full-width"/>
+    <div class="row">
+        <form action="">
+            <div class="three columns">
+            <label for="civilization">Civilization</label>
+            <input class="u-full-width" id="civilization" type="text"/>
             </div>
 
-            <div class = "three columns">
-            <label for = "title">Title</label>
-            <input type = "text" id = "title" class = "u-full-width" id = "title"/>
+            <div class="three columns">
+            <label for="title">Title</label>
+            <input class="u-full-width" id="title" type="text"/>
             </div>
 
-            <div class = "three columns">
-            <label for = "author">Author</label>
-            <input type = "text" id = "author" class = "u-full-width"/>
+            <div class="three columns">
+            <label for="author">Author</label>
+            <input class="u-full-width" id="author" type="text"/>
             </div>
 
-        <div class = "two columns">
-            <label for = "medium">Medium</label>
-            <select name = "medium" id = "medium" class = "u-full-width">
-                <option value = "book">Book</option>
-                <option value = "podcast">Podcast</option>
+        <div class="two columns">
+            <label for="format">Format</label>
+            <select class="u-full-width" id="format" name="format">
+                <option value="book">Book</option>
+                <option value="podcast">Podcast</option>
             </select>
         </div>
-        <div class = "one columns">
-        <input type = "submit" value = "Submit" class = "button-primary"/>
+        <div class="one columns">
+        <input class="button-primary" id="submitBook" type="submit" value="Submit"/>
         </form>
         </div>
     </div>
 
-    <div class = "row">
-        <div class = "twelve columns">
-        </div>
+    <div class="row">
+        <div class="twelve columns"></div>
 
-        <table class = "twelve columns">
+        <table class="twelve columns table">
             <tr>
                 <th>Civilization</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Medium</th>
+                <th>Format</th>
                 <th></th>
             </tr>
-            <tbody id = "table-body"></tbody>
+            <tbody id="table-body"></tbody>
         </table>
     </div>
 </div>
 
-<script type="text/javascript" src = "assets/timbuktu.js"></script>
+<script type="text/javascript" src="assets/timbuktu.js"></script>
 
 </body>
 

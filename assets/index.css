@@ -1,17 +1,28 @@
 /* CSS */
 
-.delete {
-  font-family: Arial, Helvetica, sans-serif;
+#delete {
+  font-family: 'Zen Dots', cursive;
+  font-size: 14px;
+  line-height: 35px;
+  font-weight: lighter !important;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
   border: none;
-  border-radius: 1rem;
-  font-size: 24px;
-  background-color: rgb(210, 15, 15);
-  color: white;
+  border-radius: 6rem;
+  background-color: rgb(200, 0, 0);
+  color: #fff;
   opacity: 95%;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
 }
 
-.delete:hover {
-  background-color: rgb(230, 7, 5);
+#delete:hover {
+  background-color: rgb(200, 65, 65);
   color: white;
 }
 
