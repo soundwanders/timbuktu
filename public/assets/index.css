@@ -103,7 +103,7 @@ th:nth-child(3) {
   #format { min-width: 10vw; }
   #loginGoogle { font-size: 8px; }
   #loginGithub { font-size: 8px; }
-  #logOut { font-size: 8px; }
+  #logOut { font-size: 8px; margin-bottom: 1rem; }
   #saveData { font-size: 8px; }
   #getData { font-size: 8px; }
 }
