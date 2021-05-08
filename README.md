@@ -19,6 +19,7 @@
 - <a href = "https://github.com/necolas/normalize.css/">Normalize.CSS</a>
 - Deployed with <a href = "https://firebase.google.com/">Firebase</a>
 
-https://timbuktu-42c57.web.app/
+Demo: https://soundwanders.github.io/timbuktu
 
-https://soundwanders.github.io/timbuktu
+Firebase App: https://timbuktu-42c57.web.app/
+
