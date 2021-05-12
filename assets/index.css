@@ -1,3 +1,8 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 header {
   position: relative;
 }
@@ -24,6 +29,7 @@ th:nth-child(3) {
   transform: scale(0.5);
 }
 
+/* 
 #saveData {
   border-radius: 5px;
   margin-top: 2rem;
@@ -60,7 +66,8 @@ th:nth-child(3) {
   margin-top: 2rem;
   margin-right: 2rem;
   font-size: 12px;
-}
+} 
+*/
 
 #delete {
   float: right;
@@ -96,7 +103,7 @@ th:nth-child(3) {
   td { font-size: 16px; }
   select { min-width: 15vw; }
   input[type = submit] { margin: 0; font-size: 12px; max-height: 3rem; width: auto; line-height: 3rem; }
-  #submitBook { margin-left: 15px; margin-bottom: 5px; }
+  #submitBook { margin-left: 15px; margin-bottom: 1.5rem; }
   #delete { margin-left: 10vw; }
   #headRow { margin-top: auto; }
   #format { min-width: 10vw; }
@@ -111,7 +118,7 @@ th:nth-child(3) {
 }
 
 @media (min-width: 400px) and (max-width: 1200px) and (orientation: landscape) {
-  #submitBook { margin-left: 7rem}
+  #submitBook { margin-left: 7rem; margin-bottom: 2rem;}
   #format { min-width: 15vw; }
   button:nth-child(1) { font-size: 12px }
 }
