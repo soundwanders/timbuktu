@@ -5,7 +5,7 @@
 ## Project Notes
   - A project created with HTML, CSS, Javascript, plus Skeleton CSS and Normalize.css
   - Library holds Book title, author, format and the relevant civilization
-  - User is able to submit their own books or podcasts and create a list of materials
+  - User will be able to submit new books or podcasts and create a list of materials
   - The 'library' is a table that displays an array of Objects constructed and pushed to the array
     - Delete books from the library by clicking the red 'X' button located next to each entry
     - Books are created as objects using a constructor and then pushed to the array
@@ -19,6 +19,6 @@
 - <a href = "https://github.com/necolas/normalize.css/">Normalize.CSS</a>
 - Deployed with <a href = "https://firebase.google.com/">Firebase</a>
 
-<a href="https://soundwanders.github.io/timbuktu">Demo</a>
+<a href="https://soundwanders.github.io/timbuktu">Live Demo</a>
 
 <a href="https://timbuktu-42c57.web.app">Firebase App</a>
