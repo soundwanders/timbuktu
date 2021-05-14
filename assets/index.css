@@ -19,55 +19,16 @@ th:nth-child(3) {
   padding-left: 2rem;
 }
 
-.icons {
+.trashBin {
   display: table-header-group;
   transform: scale(0.4);
   float: right;
+  user-select: none;
 }
-.icons:hover {
+.trashBin:hover {
   transition: all .2s ease-in-out;
   transform: scale(0.5);
 }
-
-/* 
-#saveData {
-  border-radius: 5px;
-  margin-top: 2rem;
-  margin-right: 2rem;
-  font-size: 12px;
-}
-
-#getData {
-  border-radius: 5px;
-  margin-top: 2rem;
-  margin-right: 2rem;
-  font-size: 12px;
-}
-
-#loginGithub {
-  border-radius: 5px;
-  background-color:rgb(0, 0, 0);
-  margin-top: 2rem;
-  margin-right: 2rem;
-  font-size: 12px;
-}
-
-#loginGoogle {
-  border-radius: 5px;
-  background-color:rgb(0, 0, 0);
-  margin-top: 2rem;
-  margin-right: 1.5rem;
-  font-size: 12px;
-}
-
-#logOut {
-  border-radius: 5px;
-  background-color:rgb(0, 0, 0);
-  margin-top: 2rem;
-  margin-right: 2rem;
-  font-size: 12px;
-} 
-*/
 
 #delete {
   float: right;
@@ -77,8 +38,8 @@ th:nth-child(3) {
   color: #fff;
   font-family: 'Zen Dots', cursive;
   font-size: 14px;
-  line-height: 35px;
   font-weight: lighter !important;
+  line-height: 35px;
   text-align: center;
   white-space: nowrap;
   border: none;
@@ -86,6 +47,7 @@ th:nth-child(3) {
   padding: 0;
   opacity: 0.95;
   margin-right: 4rem;
+  user-select: none;
 }
 
 #delete:hover {
