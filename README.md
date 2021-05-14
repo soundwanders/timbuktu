@@ -1,7 +1,7 @@
-## Timbuktu: The Library of Ancient History
+<a href="https://soundwanders.github.io/timbuktu"><h2>Timbuktu</h2></a>
+
 ##### Current branch, 'main', only contains code for the static web application hosted on Github Pages. This version uses local storage and is not connected to Firebase.
 ##### To see the code for the version currently in development, which is a full-stack web application deployed with Firebase, please visit the branch 'firebase'
-
 ## Project Notes
   - A project created with HTML, CSS, Javascript, plus Skeleton CSS and Normalize.css
   - Library holds Book title, author, format and the relevant civilization
@@ -13,12 +13,8 @@
   - Skeleton CSS helped achieve a simple, responsive design that scales properly from mobile up to desktop
   - LocalStorage used to save and retrieve library data.
 
-
-
 - <a href = "http://getskeleton.com">Skeleton CSS</a>
 - <a href = "https://github.com/necolas/normalize.css/">Normalize.CSS</a>
 - Deployed with <a href = "https://firebase.google.com/">Firebase</a>
-
-<a href="https://soundwanders.github.io/timbuktu">Live Demo</a>
 
 <a href="https://timbuktu-42c57.web.app">Firebase App</a>
