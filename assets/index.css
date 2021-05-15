@@ -1,6 +1,6 @@
 html, body {
   max-width: 100%;
-  overflow-x: hidden;
+  margin: 0;
 }
 
 header {
@@ -57,7 +57,7 @@ th:nth-child(3) {
   transform: scale(1.1);
 }
 
-@media (min-width: 400px) and (max-width: 992px) {
+@media (min-width: 320px) and (max-width: 992px) {
   header { text-size-adjust: none; -moz-text-size-adjust:none; -webkit-text-size-adjust: none; }
   h1 { font-size: 3.0rem; margin-top: auto; }
   p { font-size: 16px; margin-bottom: 0; }
@@ -72,13 +72,13 @@ th:nth-child(3) {
   button:nth-child(1) { font-size: 16px }
 }
 
-@media (min-width: 400px) and (max-width: 992) and (orientation: landscape) {
+@media (min-width: 320px) and (max-width: 992) and (orientation: landscape) {
   #submitBook { margin-left: 7vw; }
   #format { min-width: 15vw; }
   button:nth-child(1) { font-size: 12px }
 }
 
-@media (min-width: 400px) and (max-width: 1200px) and (orientation: landscape) {
+@media (min-width: 320px) and (max-width: 1200px) and (orientation: landscape) {
   #submitBook { margin-left: 7rem; margin-bottom: 2rem;}
   #format { min-width: 15vw; }
   button:nth-child(1) { font-size: 12px }
