@@ -1,7 +1,7 @@
 <a href="https://soundwanders.github.io/timbuktu"><h2>Timbuktu</h2></a>
 
-##### Current branch, 'main', only contains code for the static web application hosted on Github Pages. This version uses local storage and is not connected to Firebase.
-##### To see the code for the version currently in development, which is a full-stack web application deployed with Firebase, please visit the branch 'firebase'
+##### Please visit the branch 'firebase' to view the Firebase deployment of this application.
+
 ## Project Notes
   - A project created with HTML, CSS, Javascript, plus Skeleton CSS and Normalize.css
   - Library holds Book title, author, format and the relevant civilization
@@ -18,3 +18,19 @@
 - Deployed with <a href = "https://firebase.google.com/">Firebase</a>
 
 <a href="https://timbuktu-42c57.web.app">Firebase App</a>
+
+### 🐛 Find Any Head Scratchers?
+
+If you encounter any bugs or issues, please feel free to contribute &smile;
+
+1. Fork the Project from branch 'main'
+2. Create your Update Branch (`git checkout -b update/PestControl`)
+3. Commit your Changes (`git commit -m 'Hey, you should fix this'`)
+4. Push to the Branch (`git push origin update/BugSquash`)
+5. Open a Pull Request
+
+<br /><br />
+
+### License
+
+[The MIT License](https://www.mit.edu/~amini/LICENSE.md)
